@@ -1,0 +1,121 @@
+/* ============================================================
+   BEAR MASCOT — Restyled for Gold × Black theme
+   (Logic/structure unchanged — only colors & shadows updated)
+   ============================================================ */
+
+/* ── Bear body ───────────────────────────────────────────── */
+.bear {
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(160deg, #2a2a2a 0%, #1a1a1a 100%);
+  border: 2px solid rgba(255,215,0,0.2);
+  border-radius: 50%;
+  position: relative;
+  margin: auto;
+  box-shadow:
+    0 0 40px rgba(255,215,0,0.1),
+    0 8px 32px rgba(0,0,0,0.6);
+}
+
+/* ── Ears ────────────────────────────────────────────────── */
+.ear {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #222222 0%, #1a1a1a 100%);
+  border: 2px solid rgba(255,215,0,0.15);
+  border-radius: 50%;
+  position: absolute;
+  top: -16px;
+  z-index: 3;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* Inner ear dot */
+.ear::before {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: rgba(255,215,0,0.12);
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.left-ear  { left: 20px; }
+.right-ear { right: 20px; }
+
+/* ── Face ────────────────────────────────────────────────── */
+.face {
+  position: absolute;
+  top: 58px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 105px;
+  height: 72px;
+  z-index: 3;
+}
+
+/* ── Eyes ────────────────────────────────────────────────── */
+.eye {
+  width: 14px;
+  height: 14px;
+  background: var(--gold, #FFD700);
+  border-radius: 50%;
+  position: absolute;
+  top: 12px;
+  box-shadow:
+    0 0 8px rgba(255,215,0,0.7),
+    0 0 16px rgba(255,215,0,0.3);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.left-eye  { left: 18px; }
+.right-eye { right: 18px; }
+
+.bear.left .eye   { transform: translateX(-6px); }
+.bear.center .eye { transform: translateX(0); }
+.bear.right .eye  { transform: translateX(6px); }
+
+/* ── Nose ────────────────────────────────────────────────── */
+.nose {
+  width: 24px;
+  height: 16px;
+  background: linear-gradient(135deg, #FFC200, #FFD700);
+  border-radius: 8px;
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(255,215,0,0.4);
+}
+
+/* ── Hands ───────────────────────────────────────────────── */
+.hand {
+  width: 44px;
+  height: 72px;
+  background: linear-gradient(180deg, #252525 0%, #1a1a1a 100%);
+  border: 1px solid rgba(255,215,0,0.15);
+  border-radius: 28px;
+  position: absolute;
+  top: 118px;
+  z-index: 4;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+.left-hand  { left: -14px; }
+.right-hand { right: -14px; }
+
+/* ── Hide-eyes (cover) ───────────────────────────────────── */
+.bear.hide-eyes .left-hand {
+  transform: translate(58px, -92px) rotate(28deg);
+}
+
+.bear.hide-eyes .right-hand {
+  transform: translate(-58px, -92px) rotate(-28deg);
+}
+
+.bear.hide-eyes .eye {
+  opacity: 0;
+}

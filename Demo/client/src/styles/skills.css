@@ -1,0 +1,322 @@
+/* ============================================================
+   SKILLS   |   Premium Luxury Gold × Black  v2 (fixed alignment)
+   ============================================================ */
+
+.skills-page {
+  min-height: 100vh;
+  padding: calc(var(--navbar-h, 72px) + 80px) var(--section-px, 80px) 110px;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Ambient gold orbs */
+.skills-page::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 100% 80% at 65% 45%, rgba(255,215,0,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse  75% 65% at 12% 28%, rgba(255,193,7,0.06)  0%, transparent 58%),
+    radial-gradient(ellipse  55% 45% at 50% -5%, rgba(244,196,48,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse  35% 28% at 25% 90%, rgba(255,215,0,0.04)  0%, transparent 50%);
+  animation: heroBgPulse 20s ease-in-out infinite alternate;
+}
+
+/* Luxury glitter starfield — matches home */
+.skills-page::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    radial-gradient(1.8px 1.8px at  9% 18%, rgba(255,215,0,0.90), transparent),
+    radial-gradient(1.2px 1.2px at 22% 72%, rgba(255,215,0,0.65), transparent),
+    radial-gradient(2.2px 2.2px at 38%  8%, rgba(255,255,255,0.60), transparent),
+    radial-gradient(1.5px 1.5px at 52% 55%, rgba(255,215,0,0.75), transparent),
+    radial-gradient(1.0px 1.0px at 67% 82%, rgba(255,193,7,0.60), transparent),
+    radial-gradient(2.0px 2.0px at 80% 22%, rgba(255,255,255,0.50), transparent),
+    radial-gradient(1.5px 1.5px at 91% 65%, rgba(255,215,0,0.70), transparent),
+    radial-gradient(1.2px 1.2px at 14% 90%, rgba(255,215,0,0.55), transparent),
+    radial-gradient(1.8px 1.8px at 75% 45%, rgba(255,193,7,0.65), transparent),
+    radial-gradient(1.0px 1.0px at 44% 28%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1.5px 1.5px at  5% 35%, rgba(255,215,0,0.60), transparent),
+    radial-gradient(2.0px 2.0px at 58% 90%, rgba(255,215,0,0.50), transparent);
+  animation: glitterTwinkle 5.5s ease-in-out infinite alternate;
+}
+
+.skills-page > * { position: relative; z-index: 1; }
+.snow-layer, .snow-ground { display: none; }
+
+/* ── Section title ───────────────────────────────────────── */
+.skills-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 88px;
+  letter-spacing: -0.03em;
+  position: relative;
+  background: linear-gradient(135deg,
+    var(--gold-warm, #FFC107)  0%,
+    var(--gold, #FFD700)       32%,
+    var(--gold-rich, #F4C430)  62%,
+    #FFF8DC                    82%,
+    var(--gold, #FFD700)      100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradFlow 7s linear infinite, fadeUp 0.8s var(--ease, cubic-bezier(0.25,1,0.5,1)) both 0.1s;
+}
+.skills-title::after {
+  content: '';
+  display: block;
+  width: 64px; height: 3px;
+  background: linear-gradient(90deg, var(--gold-warm, #FFC107), var(--gold, #FFD700), var(--gold-rich, #F4C430));
+  margin: 22px auto 0;
+  border-radius: 999px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.55), 0 0 40px rgba(255,215,0,0.25);
+  animation: dividerPulse 3s ease-in-out infinite;
+}
+
+/* ── Category cards grid ─────────────────────────────────────
+   FIX: auto-fit (not auto-fill) + justify-content:center so the
+   last row doesn't stretch/collapse unevenly when it has fewer
+   cards than a full row. align-items:stretch makes every card
+   in a row the same height, which was the main "misaligned"
+   look before.                                                */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Optional: force exactly 2 columns, stacked vertically.
+   Add class="skills-grid skills-grid--two-col" in markup
+   if you'd rather have 2 fixed columns than the responsive
+   auto-fit above. */
+.skills-grid--two-col {
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+}
+@media (max-width: 700px) {
+  .skills-grid--two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Skill section = one category card ──────────────────── */
+.skill-section {
+  margin-bottom: 0; /* spacing now handled by .skills-grid gap */
+  height: 100%;               /* FIX: fill the stretched grid row */
+  display: flex;               /* FIX: let content anchor consistently */
+  flex-direction: column;
+  background: var(--glass-bg, rgba(255,255,255,0.035));
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255,215,0,0.12);
+  border-radius: var(--radius-md, 16px);
+  padding: 28px 26px 32px;
+  box-shadow:
+    0 4px 24px rgba(0,0,0,0.48),
+    inset 0 1px 0 rgba(255,255,255,0.03);
+  transition: transform 0.32s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.32s ease,
+              border-color 0.32s ease;
+  animation: fadeUp 0.75s var(--ease, cubic-bezier(0.25,1,0.5,1)) both;
+}
+.skill-section:hover {
+  border-color: rgba(255,215,0,0.28);
+  box-shadow:
+    0 16px 44px rgba(0,0,0,0.55),
+    0 0 32px rgba(255,215,0,0.10),
+    inset 0 1px 0 rgba(255,215,0,0.10);
+}
+.skill-section:nth-child(2) { animation-delay: 0.12s; }
+.skill-section:nth-child(3) { animation-delay: 0.18s; }
+.skill-section:nth-child(4) { animation-delay: 0.24s; }
+.skill-section:nth-child(5) { animation-delay: 0.30s; }
+.skill-section:nth-child(6) { animation-delay: 0.36s; }
+.skill-section:nth-child(7) { animation-delay: 0.42s; }
+.skill-section:nth-child(8) { animation-delay: 0.48s; }
+.skill-section:nth-child(9) { animation-delay: 0.54s; }
+
+.skill-section h3 {
+  font-size: 0.80rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold, #FFD700);
+  margin-bottom: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  position: relative;
+}
+/* Small round bullet before the title, like the reference layout */
+.skill-section h3::before {
+  content: '';
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--gold, #FFD700);
+  box-shadow: 0 0 10px rgba(255,215,0,0.65), 0 0 20px rgba(255,215,0,0.30);
+  flex-shrink: 0;
+}
+.skill-section h3::after { content: none; }
+
+/* ── Skill grid (icons inside each category card) ─────────── */
+/* FIX: auto-fill was letting rows have uneven leftover columns
+   depending on card count; auto-fit + justify-items:center
+   keeps icons centered and evenly spaced even when a category
+   has an odd number of skills. flex-grow:1 pushes this grid to
+   fill the now-flex .skill-section so bottoms line up too.     */
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+  gap: 16px;
+  justify-items: center;
+  align-content: start;
+  flex-grow: 1;
+}
+
+/* ── Skill card (individual icon tile) ──────────────────────── */
+.skill-card {
+  position: relative;
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,215,0,0.10);
+  border-radius: var(--radius-sm, 12px);
+  padding: 22px 12px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  overflow: hidden;
+  cursor: none;
+  transition:
+    transform 0.32s cubic-bezier(0.34,1.56,0.64,1),
+    box-shadow 0.32s ease,
+    border-color 0.32s ease,
+    background 0.32s ease;
+  opacity: 0;
+  animation: cardIn 0.65s cubic-bezier(0.34,1.56,0.64,1) both;
+  transform-style: preserve-3d;
+  perspective: 600px;
+}
+
+/* Top shimmer line */
+.skill-card::before {
+  content: '';
+  position: absolute; top: 0; left: 15%; right: 15%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,215,0,0.60), rgba(255,255,255,0.40), rgba(255,215,0,0.60), transparent);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: opacity 0.32s ease, transform 0.32s ease;
+}
+
+/* Radial spotlight */
+.skill-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(255,215,0,0.11) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.32s ease;
+  pointer-events: none;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.05) rotateX(2deg);
+  border-color: rgba(255,215,0,0.44);
+  background: rgba(255,215,0,0.06);
+  box-shadow:
+    0 18px 44px rgba(0,0,0,0.55),
+    0 0 36px rgba(255,215,0,0.16),
+    inset 0 1px 0 rgba(255,215,0,0.18);
+}
+.skill-card:hover::before { opacity: 1; transform: scaleX(1); }
+.skill-card:hover::after  { opacity: 1; }
+
+/* Icon — bumped up from 40x40 to 52x52 */
+.skill-card img {
+  width: 52px; height: 52px;
+  object-fit: contain;
+  border-radius: var(--radius-sm, 10px);
+  transition:
+    transform 0.38s cubic-bezier(0.34,1.56,0.64,1),
+    filter 0.32s ease;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.52));
+  will-change: transform;
+}
+.skill-card:hover img {
+  transform: scale(1.18) rotate(8deg) translateY(-3px);
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.62)) drop-shadow(0 0 14px rgba(255,215,0,0.40));
+}
+
+/* Label */
+.skill-card span {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-secondary, rgba(255,255,255,0.68));
+  text-align: center;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  transition: color 0.28s ease;
+}
+.skill-card:hover span { color: var(--gold, #FFD700); }
+
+/* Stagger delays — cards 1–12 */
+.skill-card:nth-child(1)  { animation-delay: 0.03s; }
+.skill-card:nth-child(2)  { animation-delay: 0.06s; }
+.skill-card:nth-child(3)  { animation-delay: 0.09s; }
+.skill-card:nth-child(4)  { animation-delay: 0.12s; }
+.skill-card:nth-child(5)  { animation-delay: 0.15s; }
+.skill-card:nth-child(6)  { animation-delay: 0.18s; }
+.skill-card:nth-child(7)  { animation-delay: 0.21s; }
+.skill-card:nth-child(8)  { animation-delay: 0.24s; }
+.skill-card:nth-child(9)  { animation-delay: 0.27s; }
+.skill-card:nth-child(10) { animation-delay: 0.30s; }
+.skill-card:nth-child(11) { animation-delay: 0.33s; }
+.skill-card:nth-child(12) { animation-delay: 0.36s; }
+
+/* ── Light mode ──────────────────────────────────────────── */
+[data-theme="light"] .skill-section {
+  background: rgba(255,255,255,0.82);
+  border-color: rgba(184,118,11,0.16);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+}
+[data-theme="light"] .skill-section:hover {
+  border-color: rgba(184,118,11,0.36);
+  box-shadow: 0 16px 44px rgba(0,0,0,0.10), 0 0 32px rgba(184,118,11,0.10);
+}
+[data-theme="light"] .skill-card {
+  background: rgba(255,255,255,0.55);
+  border-color: rgba(184,118,11,0.14);
+}
+[data-theme="light"] .skill-card:hover {
+  background: rgba(255,253,240,0.96);
+  border-color: rgba(184,118,11,0.44);
+  box-shadow: 0 20px 55px rgba(0,0,0,0.11), 0 0 40px rgba(184,118,11,0.13);
+}
+[data-theme="light"] .skill-card span   { color: rgba(10,8,0,0.68); }
+[data-theme="light"] .skill-card:hover span { color: #B8760B; }
+[data-theme="light"] .skill-section h3  { color: #B8760B; }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .skills-page {
+    padding: calc(var(--navbar-h, 72px) + 52px) 24px 90px;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .skill-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+  }
+}

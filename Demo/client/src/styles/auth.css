@@ -1,0 +1,351 @@
+/* ============================================================
+   AUTH PAGES (LOGIN / SIGNUP)   |   Premium Luxury Dark Theme v2
+   Matches the portfolio's Black × Gold identity perfectly
+   ============================================================ */
+
+/* ── Reset ───────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+  font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Full-page background ────────────────────────────────── */
+.auth-page {
+  width: 100vw;
+  min-height: 100vh;
+  padding-top: 140px;
+  padding-bottom: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+  /* Deep black base */
+  background: #050505;
+}
+
+/* Multi-layer animated aurora gradient */
+.auth-page::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 70% at 20% 25%, rgba(255,215,0,0.10) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 65% at 80% 72%, rgba(255,193,7,0.08)  0%, transparent 56%),
+    radial-gradient(ellipse 55% 45% at 50% 100%,rgba(244,196,48,0.07) 0%, transparent 52%),
+    radial-gradient(ellipse 40% 35% at  5% 80%, rgba(255,215,0,0.05)  0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 95%  5%, rgba(255,215,0,0.06)  0%, transparent 50%);
+  animation: aboutBgPulse 22s ease-in-out infinite alternate;
+}
+
+/* Gold sparkle starfield */
+.auth-page::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    radial-gradient(1.8px 1.8px at  8% 16%, rgba(255,215,0,0.75), transparent),
+    radial-gradient(1.2px 1.2px at 24% 60%, rgba(255,215,0,0.55), transparent),
+    radial-gradient(2.2px 2.2px at 48%  9%, rgba(255,255,255,0.60), transparent),
+    radial-gradient(1.5px 1.5px at 70% 46%, rgba(255,215,0,0.65), transparent),
+    radial-gradient(1.0px 1.0px at 86% 76%, rgba(255,193,7,0.50), transparent),
+    radial-gradient(2.0px 2.0px at 38% 38%, rgba(255,215,0,0.52), transparent),
+    radial-gradient(1.5px 1.5px at 14% 82%, rgba(255,215,0,0.45), transparent),
+    radial-gradient(1.2px 1.2px at 92% 28%, rgba(255,215,0,0.58), transparent),
+    radial-gradient(1.8px 1.8px at 60% 72%, rgba(255,193,7,0.48), transparent),
+    radial-gradient(1.0px 1.0px at 55% 20%, rgba(255,255,255,0.42), transparent);
+  animation: glitterTwinkle 6s ease-in-out infinite alternate;
+}
+
+/* ── Auth card ───────────────────────────────────────────── */
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 52px 48px 48px;
+  padding-top: 168px;   /* room for the bear */
+  background: rgba(255,255,255,0.030);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid rgba(255,215,0,0.18);
+  border-radius: 32px;
+  position: relative;
+  z-index: 5;
+  box-shadow:
+    0 32px 100px rgba(0,0,0,0.85),
+    0 0 0 1px rgba(255,215,0,0.06),
+    0 0 80px rgba(255,215,0,0.05),
+    inset 0 1px 0 rgba(255,215,0,0.10);
+  animation: scaleIn 0.65s cubic-bezier(0.34,1.56,0.64,1) both;
+  margin: 0 16px;
+}
+
+/* Top gold gradient line */
+.auth-card::before {
+  content: '';
+  position: absolute; top: 0; left: 18%; right: 18%; height: 2px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255,215,0,0.60) 30%,
+    rgba(255,255,255,0.55) 50%,
+    rgba(255,215,0,0.60) 70%,
+    transparent
+  );
+  border-radius: 999px;
+}
+
+/* Slow glass shine */
+.auth-card::after {
+  content: '';
+  position: absolute; top: 0; left: -80%; width: 55%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,215,0,0.03) 50%, transparent);
+  animation: glassSweep 9s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: 32px;
+}
+
+/* ── Bear wrapper ────────────────────────────────────────── */
+.bear-wrapper {
+  position: absolute;
+  top: -118px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* ── Card heading ────────────────────────────────────────── */
+.auth-card h2 {
+  text-align: center;
+  margin-bottom: 32px;
+  font-size: 1.90rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  background: linear-gradient(135deg,
+    var(--gold-warm, #FFC107) 0%,
+    var(--gold, #FFD700)      42%,
+    var(--gold-rich, #F4C430) 72%,
+    #FFF8DC                   90%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradFlow 7s linear infinite;
+}
+
+/* ── Inputs ──────────────────────────────────────────────── */
+.auth-card input {
+  width: 100%;
+  padding: 16px 20px;
+  margin-bottom: 18px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,215,0,0.18);
+  border-radius: var(--radius-md, 16px);
+  color: var(--text-primary, #FFFFFF);
+  font-size: 0.96rem;
+  font-family: inherit;
+  outline: none;
+  display: block;
+  box-sizing: border-box;
+  transition:
+    border-color 0.30s ease,
+    background 0.30s ease,
+    box-shadow 0.30s ease,
+    transform 0.22s var(--ease-spring, cubic-bezier(0.34,1.56,0.64,1));
+  -webkit-appearance: none;
+}
+.auth-card input::placeholder {
+  color: rgba(255,255,255,0.28);
+}
+.auth-card input:focus {
+  border-color: rgba(255,215,0,0.60);
+  background: rgba(255,215,0,0.04);
+  box-shadow:
+    0 0 0 3px rgba(255,215,0,0.12),
+    0 6px 28px rgba(255,215,0,0.09);
+  transform: translateY(-1px);
+}
+
+/* ── Submit button ───────────────────────────────────────── */
+.auth-card button[type="submit"] {
+  width: 100%;
+  padding: 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg,
+    var(--gold-warm, #FFC107) 0%,
+    var(--gold, #FFD700)      40%,
+    var(--gold-rich, #F4C430) 70%,
+    var(--gold-warm, #FFC107) 100%
+  );
+  background-size: 200% auto;
+  color: #050505;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-family: inherit;
+  border: none;
+  cursor: none;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.28s cubic-bezier(0.34,1.56,0.64,1),
+    box-shadow 0.32s ease,
+    background-position 0.5s ease;
+  box-shadow:
+    0 8px 36px rgba(255,215,0,0.42),
+    0 1px 0 rgba(255,255,255,0.30) inset;
+  animation: btnShimmer 4s linear infinite;
+}
+.auth-card button[type="submit"]::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, transparent 52%);
+  pointer-events: none;
+}
+.auth-card button[type="submit"]:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow:
+    0 18px 60px rgba(255,215,0,0.62),
+    0 0 0 1px rgba(255,215,0,0.58),
+    0 1px 0 rgba(255,255,255,0.30) inset;
+  background-position: right center;
+}
+.auth-card button:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+  transform: none !important;
+  animation: none;
+}
+
+/* ── Google button ───────────────────────────────────────── */
+.google-btn {
+  margin-top: 14px;
+  width: 100%;
+  padding: 15px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,215,0,0.22);
+  background: rgba(255,215,0,0.04);
+  color: rgba(255,255,255,0.72);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: none;
+  letter-spacing: 0.04em;
+  font-family: inherit;
+  transition: all 0.28s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.google-btn::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,215,0,0.06) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+.google-btn:hover {
+  background: rgba(255,215,0,0.08);
+  border-color: rgba(255,215,0,0.44);
+  color: rgba(255,255,255,0.92);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(255,215,0,0.14);
+}
+.google-btn:hover::before { opacity: 1; }
+
+/* ── Footer text ─────────────────────────────────────────── */
+.auth-card > p {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.40);
+}
+.auth-card a {
+  color: var(--gold, #FFD700);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.auth-card a:hover {
+  opacity: 0.78;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Thin navbar (on auth pages) ─────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 68px;
+  padding: 0 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(5,5,5,0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255,215,0,0.14);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.60);
+  z-index: 1000;
+}
+.navbar .logo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.20rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--gold-warm, #FFC107), var(--gold, #FFD700));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  height: auto; padding: 0;
+}
+
+/* ── Keyframes (local copies for auth standalone pages) ──── */
+@keyframes aboutBgPulse {
+  0%   { opacity: 0.65; transform: scale(1); }
+  100% { opacity: 1;    transform: scale(1.05) translateY(-16px); }
+}
+@keyframes glitterTwinkle {
+  0%   { opacity: 0.28; transform: scale(1); }
+  50%  { opacity: 0.88; transform: scale(1.03); }
+  100% { opacity: 0.28; transform: scale(1); }
+}
+@keyframes glassSweep {
+  0%   { left: -80%; }
+  50%  { left: 130%; }
+  100% { left: -80%; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.80) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes gradFlow {
+  0%   { background-position: 0%   center; }
+  100% { background-position: 300% center; }
+}
+@keyframes btnShimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes dividerPulse {
+  0%, 100% { box-shadow: 0 0 18px rgba(255,215,0,0.45); width: 64px; }
+  50%       { box-shadow: 0 0 34px rgba(255,215,0,0.70); width: 82px; }
+}
+@keyframes cursorBlink {
+  0%,  49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(32px) scale(0.92); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .auth-page  { padding-top: 132px; padding-left: 14px; padding-right: 14px; }
+  .auth-card  { padding: 44px 26px 44px; padding-top: 158px; border-radius: 24px; }
+  .navbar     { padding: 0 18px; }
+}

@@ -1,0 +1,203 @@
+/* ============================================================
+   AI TOOLS KNOWN   |   Premium Luxury Gold × Black  v2
+   Neural-network / futuristic aesthetic
+   ============================================================ */
+
+.ai-tools-page {
+  min-height: 100vh;
+  padding: calc(var(--navbar-h, 72px) + 80px) var(--section-px, 80px) 120px;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Ambient orbs */
+.ai-tools-page::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 100% 80% at 65% 45%, rgba(255,215,0,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse  76% 60% at  9% 22%, rgba(255,193,7,0.06)  0%, transparent 58%),
+    radial-gradient(ellipse  55% 45% at 50% -5%, rgba(244,196,48,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse  36% 30% at 30% 92%, rgba(255,215,0,0.04)  0%, transparent 50%);
+  animation: heroBgPulse 20s ease-in-out infinite alternate;
+}
+
+/* Luxury glitter starfield — matches home */
+.ai-tools-page::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    radial-gradient(1.8px 1.8px at  9% 18%, rgba(255,215,0,0.90), transparent),
+    radial-gradient(1.2px 1.2px at 22% 72%, rgba(255,215,0,0.65), transparent),
+    radial-gradient(2.2px 2.2px at 38%  8%, rgba(255,255,255,0.60), transparent),
+    radial-gradient(1.5px 1.5px at 52% 55%, rgba(255,215,0,0.75), transparent),
+    radial-gradient(1.0px 1.0px at 67% 82%, rgba(255,193,7,0.60), transparent),
+    radial-gradient(2.0px 2.0px at 80% 22%, rgba(255,255,255,0.50), transparent),
+    radial-gradient(1.5px 1.5px at 91% 65%, rgba(255,215,0,0.70), transparent),
+    radial-gradient(1.2px 1.2px at 14% 90%, rgba(255,215,0,0.55), transparent),
+    radial-gradient(1.8px 1.8px at 75% 45%, rgba(255,193,7,0.65), transparent),
+    radial-gradient(1.0px 1.0px at 44% 28%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1.5px 1.5px at  5% 35%, rgba(255,215,0,0.60), transparent),
+    radial-gradient(2.0px 2.0px at 58% 90%, rgba(255,215,0,0.50), transparent);
+  animation: glitterTwinkle 5.5s ease-in-out infinite alternate;
+}
+
+.ai-tools-page > * { position: relative; z-index: 1; }
+
+/* ── Title ───────────────────────────────────────────────── */
+.ai-tools-page h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 88px;
+  letter-spacing: -0.03em;
+  position: relative;
+  background: linear-gradient(135deg,
+    var(--gold-warm, #FFC107) 0%,
+    var(--gold, #FFD700)      32%,
+    var(--gold-rich, #F4C430) 62%,
+    #FFF8DC                   82%,
+    var(--gold, #FFD700)     100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradFlow 7s linear infinite, fadeUp 0.8s var(--ease, cubic-bezier(0.25,1,0.5,1)) both 0.1s;
+}
+.ai-tools-page h1::after {
+  content: '';
+  display: block;
+  width: 64px; height: 3px;
+  background: linear-gradient(90deg, var(--gold-warm, #FFC107), var(--gold, #FFD700), var(--gold-rich, #F4C430));
+  margin: 22px auto 0;
+  border-radius: 999px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.55), 0 0 40px rgba(255,215,0,0.25);
+  animation: dividerPulse 3s ease-in-out infinite;
+}
+
+/* ── Grid ────────────────────────────────────────────────── */
+.ai-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(202px, 1fr));
+  gap: 24px;
+  max-width: 1120px;
+  margin: 0 auto;
+  animation: fadeUp 0.8s var(--ease, cubic-bezier(0.25,1,0.5,1)) both 0.22s;
+}
+
+/* ── Card ────────────────────────────────────────────────── */
+.ai-tool-card {
+  position: relative;
+  padding: 42px 24px 36px;
+  text-align: center;
+  background: var(--glass-bg, rgba(255,255,255,0.035));
+  backdrop-filter: blur(26px) saturate(180%);
+  -webkit-backdrop-filter: blur(26px) saturate(180%);
+  border: 1px solid rgba(255,215,0,0.12);
+  border-radius: var(--radius-lg, 24px);
+  font-size: 1.00rem;
+  font-weight: 700;
+  font-family: var(--font-body, 'Space Grotesk', sans-serif);
+  color: var(--text-secondary, rgba(255,255,255,0.78));
+  overflow: hidden;
+  cursor: none;
+  transition:
+    transform 0.34s cubic-bezier(0.34,1.56,0.64,1),
+    box-shadow 0.34s ease,
+    border-color 0.34s ease,
+    color 0.34s ease,
+    background 0.34s ease;
+  box-shadow:
+    0 6px 30px rgba(0,0,0,0.52),
+    inset 0 1px 0 rgba(255,255,255,0.03);
+  opacity: 0;
+  animation: cardIn 0.62s cubic-bezier(0.34,1.56,0.64,1) both;
+  letter-spacing: 0.01em;
+}
+
+/* Neural pulse dot */
+.ai-tool-card::before {
+  content: '';
+  position: absolute;
+  top: 20px; left: 50%;
+  transform: translateX(-50%);
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--gold, #FFD700);
+  box-shadow: 0 0 14px rgba(255,215,0,0.85), 0 0 28px rgba(255,215,0,0.40);
+  opacity: 0.45;
+  transition: opacity 0.32s ease, transform 0.32s ease, box-shadow 0.32s ease;
+}
+
+/* Inner bottom radial glow */
+.ai-tool-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 105%, rgba(255,215,0,0.10) 0%, transparent 62%);
+  opacity: 0;
+  transition: opacity 0.32s ease;
+  pointer-events: none;
+}
+
+/* Top shimmer */
+.ai-tool-card .shimmer {
+  position: absolute; top: 0; left: 16%; right: 16%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,215,0,0.70), rgba(255,255,255,0.40), rgba(255,215,0,0.70), transparent);
+  opacity: 0;
+  transition: opacity 0.32s ease;
+}
+
+.ai-tool-card:hover {
+  transform: translateY(-15px) scale(1.07);
+  border-color: rgba(255,215,0,0.46);
+  background: rgba(255,215,0,0.065);
+  color: var(--gold, #FFD700);
+  box-shadow:
+    0 26px 70px rgba(0,0,0,0.60),
+    0 0 56px rgba(255,215,0,0.18),
+    0 0 100px rgba(255,215,0,0.07),
+    inset 0 1px 0 rgba(255,215,0,0.14);
+}
+.ai-tool-card:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.50);
+  box-shadow: 0 0 20px rgba(255,215,0,1), 0 0 40px rgba(255,215,0,0.55);
+}
+.ai-tool-card:hover::after  { opacity: 1; }
+.ai-tool-card:hover .shimmer { opacity: 1; }
+
+/* Stagger 1–10 */
+.ai-tool-card:nth-child(1)  { animation-delay: 0.04s; }
+.ai-tool-card:nth-child(2)  { animation-delay: 0.08s; }
+.ai-tool-card:nth-child(3)  { animation-delay: 0.12s; }
+.ai-tool-card:nth-child(4)  { animation-delay: 0.16s; }
+.ai-tool-card:nth-child(5)  { animation-delay: 0.20s; }
+.ai-tool-card:nth-child(6)  { animation-delay: 0.24s; }
+.ai-tool-card:nth-child(7)  { animation-delay: 0.28s; }
+.ai-tool-card:nth-child(8)  { animation-delay: 0.32s; }
+.ai-tool-card:nth-child(9)  { animation-delay: 0.36s; }
+.ai-tool-card:nth-child(10) { animation-delay: 0.40s; }
+
+/* Light mode */
+[data-theme="light"] .ai-tool-card {
+  background: rgba(255,255,255,0.82);
+  border-color: rgba(184,118,11,0.16);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  color: rgba(10,8,0,0.72);
+}
+[data-theme="light"] .ai-tool-card:hover {
+  background: rgba(255,253,240,0.96);
+  border-color: rgba(184,118,11,0.44);
+  color: #B8760B;
+  box-shadow: 0 22px 62px rgba(0,0,0,0.11), 0 0 44px rgba(184,118,11,0.14);
+}
+[data-theme="light"] .ai-tool-card::before { background: #B8760B; box-shadow: 0 0 12px rgba(184,118,11,0.85); }
+
+@media (max-width: 900px) {
+  .ai-tools-page { padding: calc(var(--navbar-h, 72px) + 52px) 22px 90px; }
+  .ai-tools-grid { grid-template-columns: repeat(auto-fill, minmax(158px, 1fr)); gap: 16px; }
+  .ai-tool-card  { padding: 32px 18px 28px; font-size: 0.92rem; }
+}

@@ -1,0 +1,324 @@
+/* ============================================================
+   CERTIFICATIONS HUB   |   Premium Luxury Gold × Black  v2
+   ============================================================ */
+
+.certifications-page {
+  min-height: 100vh;
+  padding: calc(var(--navbar-h, 72px) + 80px) var(--section-px, 80px) 120px;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ambient orbs */
+.certifications-page::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 100% 80% at 65% 45%, rgba(255,215,0,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse  75% 60% at 14% 28%, rgba(255,193,7,0.06)  0%, transparent 58%),
+    radial-gradient(ellipse  55% 45% at 50% -5%, rgba(244,196,48,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse  40% 35% at 86% 66%, rgba(255,215,0,0.04)  0%, transparent 50%);
+  animation: heroBgPulse 20s ease-in-out infinite alternate;
+}
+
+/* Luxury glitter starfield — matches home */
+.certifications-page::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    radial-gradient(1.8px 1.8px at  9% 18%, rgba(255,215,0,0.90), transparent),
+    radial-gradient(1.2px 1.2px at 22% 72%, rgba(255,215,0,0.65), transparent),
+    radial-gradient(2.2px 2.2px at 38%  8%, rgba(255,255,255,0.60), transparent),
+    radial-gradient(1.5px 1.5px at 52% 55%, rgba(255,215,0,0.75), transparent),
+    radial-gradient(1.0px 1.0px at 67% 82%, rgba(255,193,7,0.60), transparent),
+    radial-gradient(2.0px 2.0px at 80% 22%, rgba(255,255,255,0.50), transparent),
+    radial-gradient(1.5px 1.5px at 91% 65%, rgba(255,215,0,0.70), transparent),
+    radial-gradient(1.2px 1.2px at 14% 90%, rgba(255,215,0,0.55), transparent),
+    radial-gradient(1.8px 1.8px at 75% 45%, rgba(255,193,7,0.65), transparent),
+    radial-gradient(1.0px 1.0px at 44% 28%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1.5px 1.5px at  5% 35%, rgba(255,215,0,0.60), transparent),
+    radial-gradient(2.0px 2.0px at 58% 90%, rgba(255,215,0,0.50), transparent);
+  animation: glitterTwinkle 5.5s ease-in-out infinite alternate;
+}
+
+.certifications-page > * { position: relative; z-index: 1; }
+
+/* ── Title ───────────────────────────────────────────────── */
+.certifications-page h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 88px;
+  letter-spacing: -0.03em;
+  position: relative;
+  background: linear-gradient(135deg,
+    var(--gold-warm, #FFC107) 0%,
+    var(--gold, #FFD700)      32%,
+    var(--gold-rich, #F4C430) 62%,
+    #FFF8DC                   82%,
+    var(--gold, #FFD700)     100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradFlow 7s linear infinite, fadeUp 0.8s var(--ease, cubic-bezier(0.25,1,0.5,1)) both 0.1s;
+}
+.certifications-page h1::after {
+  content: '';
+  display: block;
+  width: 64px; height: 3px;
+  background: linear-gradient(90deg, var(--gold-warm, #FFC107), var(--gold, #FFD700), var(--gold-rich, #F4C430));
+  margin: 22px auto 0;
+  border-radius: 999px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.55), 0 0 40px rgba(255,215,0,0.25);
+  animation: dividerPulse 3s ease-in-out infinite;
+}
+
+/* ── Category grid ───────────────────────────────────────── */
+.cert-category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+  gap: 100px;
+  max-width: 980px;
+  width: 100%;
+  justify-items: center;
+  padding-bottom: 40px;
+}
+
+/* ── Category card — REALISTIC ROTATING GOLD GLOBE ───────── */
+.cert-category-card {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 560px;
+  height: 560px;
+  padding: 92px 66px;
+  border-radius: 50%;
+  position: relative;
+  isolation: isolate;
+  opacity: 0;
+  filter: drop-shadow(0 54px 16px rgba(0,0,0,0.35));
+
+  /* ── The 5 stacked layers (top → bottom):
+     1. rim vignette (fixed)
+     2. specular highlight (fixed)
+     3. terminator / night-side shading (fixed)  ← never moves, this sells the "sphere"
+     4. world-map texture, SVG (ANIMATED)          ← only this layer's position moves
+     5. base gold sphere color (fixed)
+  ── */
+  background-image:
+    radial-gradient(circle at 50% 50%, transparent 74%, rgba(0,0,0,0.35) 88%, rgba(0,0,0,0.62) 100%),
+    radial-gradient(circle at 30% 22%, rgba(255,255,255,0.92) 0%, rgba(255,250,220,0.4) 8%, transparent 26%),
+    radial-gradient(circle at 74% 70%, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.55) 32%, transparent 62%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Cellipse cx='30' cy='60' rx='30' ry='18' fill='rgba(90,60,10,0.55)'/%3E%3Cellipse cx='95' cy='125' rx='24' ry='15' fill='rgba(90,60,10,0.42)'/%3E%3Cellipse cx='150' cy='45' rx='36' ry='22' fill='rgba(90,60,10,0.5)'/%3E%3Cellipse cx='210' cy='110' rx='20' ry='13' fill='rgba(90,60,10,0.4)'/%3E%3Cellipse cx='265' cy='55' rx='30' ry='19' fill='rgba(90,60,10,0.5)'/%3E%3Cellipse cx='320' cy='130' rx='22' ry='14' fill='rgba(90,60,10,0.4)'/%3E%3Cellipse cx='370' cy='70' rx='18' ry='12' fill='rgba(90,60,10,0.38)'/%3E%3C/svg%3E"),
+    radial-gradient(circle at 50% 50%, #FFE066 0%, #FFD700 26%, #E8B923 50%, #B8860B 76%, #6b4a02 100%);
+
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat-x, no-repeat;
+  background-size:   100% 100%, 100% 100%, 100% 100%, 260% 100%, 100% 100%;
+  background-position: 50% 50%, 50% 50%, 50% 50%, 0% 50%, 50% 50%;
+  background-blend-mode: normal, normal, normal, multiply, normal;
+
+  box-shadow:
+    0 26px 58px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(255,236,170,0.4),
+    inset -26px -30px 60px rgba(0,0,0,0.5),
+    inset 18px 20px 48px rgba(255,255,255,0.35);
+
+  animation-name: cardIn, globeRotate, trophyFloat;
+  animation-duration: 0.72s, 9s, 5s;
+  animation-timing-function: cubic-bezier(0.34,1.56,0.64,1), linear, ease-in-out;
+  animation-iteration-count: 1, infinite, infinite;
+  animation-fill-mode: both, none, none;
+
+  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease;
+}
+.cert-category-card:nth-child(1) { animation-delay: 0.08s, 0s, 0.5s; }
+.cert-category-card:nth-child(2) { animation-delay: 0.22s, 0s, 0.7s; }
+
+.cert-category-card:hover {
+  transform: translateY(-10px) scale(1.035);
+  /* only the rotation speeds up — cardIn/trophyFloat durations stay put */
+  animation-duration: 0.72s, 3.2s, 5s;
+  box-shadow:
+    0 40px 84px rgba(0,0,0,0.6),
+    0 0 70px rgba(255,215,0,0.28),
+    0 0 140px rgba(255,215,0,0.10),
+    0 0 0 1px rgba(255,236,170,0.55),
+    inset -26px -30px 60px rgba(0,0,0,0.5),
+    inset 18px 20px 48px rgba(255,255,255,0.4);
+}
+
+@keyframes globeRotate {
+  from { background-position: 50% 50%, 50% 50%, 50% 50%,    0% 50%, 50% 50%; }
+  to   { background-position: 50% 50%, 50% 50%, 50% 50%, -260% 50%, 50% 50%; }
+}
+
+@keyframes trophyFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* Slow orbiting specular glint — independent of the map rotation, adds realism */
+.cert-category-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-image: radial-gradient(circle 60px at center, rgba(255,255,255,0.9), transparent 70%);
+  background-repeat: no-repeat;
+  background-position: 30% 20%;
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  animation: glintOrbit 7.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes glintOrbit {
+  0%   { background-position: 30% 20%; opacity: 0.5; }
+  25%  { background-position: 68% 14%; opacity: 0.7; }
+  50%  { background-position: 80% 46%; opacity: 0.3; }
+  75%  { background-position: 42% 68%; opacity: 0.5; }
+  100% { background-position: 30% 20%; opacity: 0.5; }
+}
+
+/* Static glass/metal sheen arc near the top — fixed, gives the polished-trophy look */
+.cert-category-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(200deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.08) 18%, transparent 34%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Inner content (icon, label, title, description) ─────── */
+.cert-card-icon {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.5), rgba(255,215,0,0.1) 70%);
+  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow:
+    0 4px 14px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+  position: relative;
+  z-index: 3;
+  transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1);
+}
+.cert-category-card:hover .cert-card-icon {
+  transform: scale(1.12) rotate(-8deg);
+}
+
+.cert-card-label {
+  position: relative;
+  z-index: 3;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(30,18,0,0.85);
+  margin-bottom: 8px;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.25);
+}
+
+.cert-category-card h2 {
+  position: relative;
+  z-index: 3;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+  color: #241300;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.3), 0 -1px 0 rgba(0,0,0,0.25);
+}
+
+.cert-category-card p {
+  position: relative;
+  z-index: 3;
+  font-size: 0.92rem;
+  color: rgba(20,12,0,0.92);
+  line-height: 1.58;
+  max-width: 270px;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+}
+
+/* CTA styled as an engraved trophy nameplate below the sphere */
+.cert-card-cta {
+  position: absolute;
+  bottom: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 22px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #FFE9A8;
+  background: linear-gradient(180deg, #2a1d06, #120c00);
+  border: 1px solid rgba(255,215,0,0.45);
+  border-radius: 6px;
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,215,0,0.2);
+  transition: all 0.35s ease;
+  z-index: 4;
+}
+.cert-card-cta svg { transition: transform 0.35s ease; }
+.cert-category-card:hover .cert-card-cta {
+  color: #FFF6D6;
+  border-color: rgba(255,215,0,0.8);
+  box-shadow:
+    0 10px 26px rgba(0,0,0,0.55),
+    0 0 20px rgba(255,215,0,0.25),
+    inset 0 1px 0 rgba(255,215,0,0.3);
+}
+.cert-category-card:hover .cert-card-cta svg {
+  transform: translateX(3px);
+}
+
+/* ── Light mode ──────────────────────────────────────────── */
+[data-theme="light"] .cert-category-card h2,
+[data-theme="light"] .cert-category-card p,
+[data-theme="light"] .cert-card-label {
+  color: #241300;
+}
+[data-theme="light"] .cert-card-cta {
+  color: #FFE9A8;
+  background: linear-gradient(180deg, #2a1d06, #120c00);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .certifications-page { padding: calc(var(--navbar-h, 72px) + 52px) 22px 90px; }
+  .cert-category-grid  { grid-template-columns: 1fr; gap: 76px; }
+  .cert-category-card  {
+    width: 340px;
+    height: 340px;
+    padding: 68px 46px;
+  }
+  .cert-category-card h2 { font-size: 1.28rem; }
+  .cert-category-card p { font-size: 0.8rem; max-width: 215px; }
+  .cert-card-cta { bottom: -60px; font-size: 0.7rem; padding: 8px 18px; }
+}

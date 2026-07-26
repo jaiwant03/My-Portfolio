@@ -1,0 +1,306 @@
+/* ============================================================
+   GLOBAL CERTIFICATIONS   |   Premium Luxury Gold × Black  v3
+   — Background now matches Home Hero / index.css exactly —
+   ============================================================ */
+
+.global-certifications-page {
+  min-height: 100vh;
+  padding: calc(var(--navbar-h, 72px) + 64px) var(--section-px, 80px) 120px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+/* ── Multi-layer ambient glow — identical structure to .hero::before ── */
+.global-certifications-page::before {
+  content: '';
+  position: absolute; inset: 0;
+  z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 100% 80% at 65% 45%, var(--gold-glow) 0%, transparent 55%),
+    radial-gradient(ellipse  65% 90% at 20% 80%, var(--gold-dim)  0%, transparent 50%),
+    radial-gradient(ellipse  55% 45% at 50% -5%, var(--gold-glow) 0%, transparent 60%),
+    radial-gradient(ellipse  40% 35% at  0% 50%, var(--gold-dim)  0%, transparent 55%);
+  opacity: 0.4;
+  animation: heroBgPulse 20s ease-in-out infinite alternate;
+}
+
+/* ── Luxury glitter starfield — same as hero ─────────────── */
+.global-certifications-page::after {
+  content: '';
+  position: absolute; inset: 0;
+  z-index: 0; pointer-events: none;
+  background-image:
+    radial-gradient(1.8px 1.8px at  9% 18%, rgba(255,215,0,0.90), transparent),
+    radial-gradient(1.2px 1.2px at 22% 72%, rgba(255,215,0,0.65), transparent),
+    radial-gradient(2.2px 2.2px at 38%  8%, rgba(255,255,255,0.60), transparent),
+    radial-gradient(1.5px 1.5px at 52% 55%, rgba(255,215,0,0.75), transparent),
+    radial-gradient(1.0px 1.0px at 67% 82%, rgba(255,193,7,0.60), transparent),
+    radial-gradient(2.0px 2.0px at 80% 22%, rgba(255,255,255,0.50), transparent),
+    radial-gradient(1.5px 1.5px at 91% 65%, rgba(255,215,0,0.70), transparent),
+    radial-gradient(1.2px 1.2px at 14% 90%, rgba(255,215,0,0.55), transparent),
+    radial-gradient(1.8px 1.8px at 75% 45%, rgba(255,193,7,0.65), transparent),
+    radial-gradient(1.0px 1.0px at 44% 28%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1.5px 1.5px at  5% 35%, rgba(255,215,0,0.60), transparent),
+    radial-gradient(2.0px 2.0px at 58% 90%, rgba(255,215,0,0.50), transparent);
+  animation: glitterTwinkle 5.5s ease-in-out infinite alternate;
+}
+
+.global-certifications-page > * { position: relative; z-index: 1; }
+
+/* ── Ambient blobs — same floating-orb treatment as About/Experience,
+     now built in CSS so you can delete the inline <div> blobs in the JSX ── */
+.global-certifications-page .cert-blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(110px);
+  z-index: 0;
+}
+.global-certifications-page .cert-blob--1 {
+  width: 520px; height: 520px;
+  background: var(--gold-dim);
+  top: -80px; left: -140px;
+  animation: blobFloat 22s ease-in-out infinite;
+}
+.global-certifications-page .cert-blob--2 {
+  width: 420px; height: 420px;
+  background: var(--gold-dim-2);
+  bottom: 60px; right: -100px;
+  animation: blobFloat 18s ease-in-out infinite reverse;
+  animation-delay: -8s;
+}
+.global-certifications-page .cert-blob--3 {
+  width: 340px; height: 340px;
+  background: var(--gold-dim-2);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: blobFloat 26s ease-in-out infinite;
+  animation-delay: -14s;
+}
+
+/* ── Back button ─────────────────────────────────────────── */
+.back-button {
+  display: inline-flex; align-items: center; gap: 9px;
+  margin-bottom: 40px;
+  padding: 11px 26px;
+  border-radius: var(--radius-full);
+  background: var(--gold-dim-2);
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  transition: all var(--dur-mid) var(--ease-spring);
+  font-family: var(--font-body);
+}
+.back-button:hover {
+  background: var(--gold-dim);
+  border-color: var(--gold-border-hover);
+  transform: translateX(-7px) scale(1.02);
+  box-shadow: 0 6px 26px var(--gold-glow);
+  color: var(--gold);
+}
+
+/* ── Page title — identical gradient treatment to .section-title ── */
+.global-certifications-page h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 72px;
+  letter-spacing: -0.03em;
+  position: relative;
+  background: linear-gradient(135deg,
+    var(--gold-warm) 0%,
+    var(--gold)       32%,
+    var(--gold-rich)  62%,
+    var(--gold-champagne) 82%,
+    var(--gold)       100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradFlow 7s linear infinite, fadeUp 0.8s var(--ease) both 0.1s;
+}
+.global-certifications-page h1::after {
+  content: '';
+  display: block;
+  width: 64px; height: 3px;
+  background: linear-gradient(90deg, var(--gold-warm), var(--gold), var(--gold-rich));
+  margin: 20px auto 0;
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 18px var(--gold-glow-md), 0 0 36px var(--gold-glow);
+  animation: dividerPulse 3s ease-in-out infinite;
+}
+
+/* ── Grid ────────────────────────────────────────────────── */
+.global-cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 26px;
+  animation: fadeUp 0.8s var(--ease) both 0.22s;
+}
+
+/* ── Card — same glass treatment as .glass-card ──────────── */
+.global-cert-card {
+  display: flex; flex-direction: column;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  transition:
+    transform var(--dur-mid) var(--ease-spring),
+    box-shadow var(--dur-mid) var(--ease),
+    border-color var(--dur-mid) var(--ease);
+  opacity: 0;
+  animation: cardIn 0.65s var(--ease-spring) both;
+}
+
+/* Animated top line */
+.global-cert-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg,
+    transparent,
+    var(--gold-border-hover) 38%,
+    rgba(255,255,255,0.58) 50%,
+    var(--gold-border-hover) 62%,
+    transparent
+  );
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.42s ease;
+  z-index: 2;
+}
+
+/* stagger */
+.global-cert-card:nth-child(1) { animation-delay: 0.04s; }
+.global-cert-card:nth-child(2) { animation-delay: 0.08s; }
+.global-cert-card:nth-child(3) { animation-delay: 0.12s; }
+.global-cert-card:nth-child(4) { animation-delay: 0.16s; }
+.global-cert-card:nth-child(5) { animation-delay: 0.20s; }
+.global-cert-card:nth-child(6) { animation-delay: 0.24s; }
+
+.global-cert-card:hover {
+  transform: translateY(-12px) scale(1.022);
+  border-color: var(--gold-border-hover);
+  box-shadow:
+    0 28px 76px rgba(0,0,0,0.62),
+    0 0 55px var(--gold-dim),
+    0 0 100px rgba(255,215,0,0.05),
+    inset 0 1px 0 var(--gold-border-hover);
+}
+.global-cert-card:hover::before { transform: scaleX(1); }
+
+/* Image wrapper — fixed frame so every card lines up, image always fits inside it whole */
+.global-cert-image-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  padding: 18px;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid var(--gold-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Image — never cropped, never overflows, scales down/up to fit the frame */
+.global-cert-image {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.42s ease, filter 0.42s ease;
+  filter: brightness(0.92);
+}
+.global-cert-card:hover .global-cert-image {
+  transform: scale(1.05);
+  filter: brightness(1.08);
+}
+
+/* Title */
+.global-cert-card h3 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 20px 22px 12px;
+  text-align: center;
+  line-height: 1.55;
+  flex: 1;
+  font-family: var(--font-body);
+}
+
+/* Links bar */
+.global-cert-links {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 15px 22px 20px;
+  border-top: 1px solid var(--gold-dim);
+}
+.global-cert-links a {
+  display: inline-flex; align-items: center;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-gold);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--gold-border);
+  background: var(--gold-dim-2);
+  transition: all 0.26s ease;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-family: var(--font-body);
+}
+.global-cert-links a:hover {
+  background: var(--gold-dim);
+  border-color: var(--gold-border-hover);
+  color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px var(--gold-glow);
+}
+
+/* ── Light mode ──────────────────────────────────────────── */
+[data-theme="light"] .global-certifications-page { background: var(--bg-primary); }
+[data-theme="light"] .global-certifications-page::before { opacity: 0.6; }
+[data-theme="light"] .global-certifications-page::after { opacity: 0.55; }
+[data-theme="light"] .global-cert-card {
+  background: var(--glass-bg);
+  border-color: var(--gold-border);
+  box-shadow: var(--glass-shadow-sm);
+}
+[data-theme="light"] .global-cert-image-wrap { background: rgba(255,255,255,0.94); border-color: var(--gold-dim); }
+[data-theme="light"] .global-cert-card h3 { color: var(--text-primary); }
+[data-theme="light"] .back-button {
+  background: var(--gold-dim-2);
+  border-color: var(--gold-border);
+  color: var(--text-gold);
+}
+[data-theme="light"] .back-button:hover {
+  background: var(--gold-dim);
+  border-color: var(--gold-border-hover);
+  color: var(--text-gold);
+}
+[data-theme="light"] .global-cert-links a { color: var(--text-gold); border-color: var(--gold-border); background: var(--gold-dim-2); }
+[data-theme="light"] .global-cert-links a:hover { background: var(--gold-dim); border-color: var(--gold-border-hover); color: var(--text-gold); }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .global-certifications-page { padding: calc(var(--navbar-h, 72px) + 44px) 22px 90px; }
+  .global-cert-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px; }
+}
