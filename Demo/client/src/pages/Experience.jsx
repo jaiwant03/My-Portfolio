@@ -12,45 +12,48 @@ export default function Experience() {
       type: "Internship",
       duration: "Dec 2025 – Jan 2026",
       description:
-        "Contributed to scalable full-stack applications and automation tools by building backend services and intelligent data collection systems.",
-      achievements: [
-        "Designed and developed a Notification Rule Builder capable of managing 500+ automated notifications.",
-        "Built scalable backend services using Python, REST APIs, and database integration.",
-        "Engineered a Reddit Web Scraping Tool that collected 10,000+ posts and comments.",
-        "Automated trend analysis and sentiment data collection using Python APIs."
-      ],
-      tech: ["Python", "REST APIs", "Database Integration", "Web Scraping", "Automation"]
+        "Worked as a Full Stack Developer Intern, developing modern web applications with the MERN stack by implementing responsive frontends, secure backend APIs, JWT authentication, and MongoDB database integration.",
+     achievements: [
+   "Developed responsive frontend interfaces using React for improved user experience.",
+   "Built secure RESTful APIs with Node.js and Express.js for application functionality.",
+   "Implemented JWT-based authentication and authorization for secure user access.",
+   "Integrated MongoDB for efficient data storage and management across applications."
+],
+      tech: ["React", "Node.js", "Express.js", "MongoDB", "REST APIs", "Database Integration","JWT"]
     },
+   {
+  company: "BookMyWenue",
+  logo: bookmyvenueLogo,
+  role: "R&D Executive Intern",
+  type: "Internship",
+  duration: "Mar 2026 – May 2026",
+  description:
+    "Contributed to research and data-driven decision-making by collecting, validating, cleaning, and organizing real-world datasets while developing interactive Power BI dashboards to generate meaningful business insights.",
+  achievements: [
+    "Collected and validated large datasets to ensure data quality and consistency.",
+    "Cleaned and organized raw data for accurate analysis and reporting.",
+    "Developed interactive Power BI dashboards to visualize key business metrics.",
+    "Transformed raw data into actionable business insights to support strategic decisions."
+  ],
+  tech: [
+    "Power BI","Data Collection","Data Validation","Data Cleaning","Data Analysis","Business Intelligence"]
+},
     {
-      company: "BookMyWenue",
-      logo: bookmyvenueLogo,
-      role: "R&D Executive Intern",
-      type: "Internship",
-      duration: "Mar 2026 – May 2026",
-      description:
-        "Worked on collecting, cleaning, and preparing real-world datasets for analytics and machine learning applications.",
-      achievements: [
-        "Performed data collection and preprocessing for AI and analytics projects.",
-        "Prepared high-quality datasets for machine learning workflows.",
-        "Created interactive dashboards and visualizations using Power BI."
-      ],
-      tech: ["Power BI", "Data Collection", "Data Cleaning", "Data Preprocessing"]
-    },
-    {
-      company: "Infosys Springboard Internship 7.0",
-      logo: infosysLogo,
-      role: "Artificial Intelligence Intern",
-      type: "Internship",
-      duration: "Jun 2026 – Jul 2026",
-      description:
-        "Applied Artificial Intelligence concepts to develop intelligent solutions using machine learning and natural language processing.",
-      achievements: [
-        "Learned and implemented Machine Learning, Deep Learning, and NLP concepts.",
-        "Developed AI-based solutions using intelligent algorithms.",
-        "Worked on automation and data-driven decision-making systems."
-      ],
-      tech: ["Artificial Intelligence", "Machine Learning", "Deep Learning", "Natural Language Processing", "Python"]
-    }
+  company: "Infosys Springboard Internship 7.0",
+  logo: infosysLogo,
+  role: "Artificial Intelligence Intern",
+  type: "Internship",
+  duration: "Jun 2026 – Jul 2026",
+  description:
+    "Designed and developed an AI Powered Query Resolution System by leveraging Retrieval-Augmented Generation (RAG), Large Language Models, and vector search to deliver accurate, context-aware responses from knowledge bases.",
+  achievements: [
+    "Developed an AI Powered Query Resolution System using LangChain and Ollama.",
+    "Implemented Retrieval-Augmented Generation (RAG) with FAISS for efficient semantic document retrieval.",
+    "Integrated Large Language Models (LLMs) to generate accurate and context-aware responses.",
+    "Built an end-to-end intelligent query resolution pipeline using Python, LangChain, FAISS, and Ollama."
+  ],
+  tech: ["FAISS", "RAG", "LLMs", "Ollama", "Python", "LangChain"]
+}
   ];
 
   return (
@@ -66,8 +69,8 @@ export default function Experience() {
         <span className="exp-header__eyebrow">Career Journey</span>
         <h2 className="exp-header__title">Professional Experience</h2>
         <p className="exp-header__sub">
-          My professional journey through internships, full-stack development,
-          artificial intelligence, and data-driven innovation.
+          My professional journey through internships, Full-Stack Development,
+          Artificial Intelligence, and Data-driven innovations.
         </p>
       </div>
 

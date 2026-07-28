@@ -144,7 +144,7 @@
 .exp-header__sub {
   font-size: 1.05rem;
   line-height: 1.85;
-  color: var(--text-secondary, rgba(255,255,255,0.60));
+  color: rgba(255,255,255,0.82);   /* ★ brighter — was 0.60 */
   max-width: 600px;
   margin: 0 auto;
 }
@@ -319,6 +319,7 @@
   padding: 36px 38px;
   position: relative;
   overflow: hidden;
+  isolation: isolate;   /* keeps cursor from being caught in the card's blur */
   box-shadow:
     0 20px 64px rgba(0,0,0,0.62),
     0 4px 20px rgba(0,0,0,0.38),
@@ -327,7 +328,6 @@
     transform 0.38s cubic-bezier(0.34,1.56,0.64,1),
     box-shadow 0.38s ease,
     border-color 0.38s ease;
-  transform-style: preserve-3d;
   cursor: none;
   z-index: 2;
 }
@@ -388,8 +388,7 @@
   margin-bottom: 0;
 }
 
-/* Company logo badge — FIXED: now properly frames the logo image
-   instead of letting it spill out / render unformatted */
+/* Company logo badge */
 .exp-card__company-badge {
   width: 52px; height: 52px;
   border-radius: 14px;
@@ -408,7 +407,7 @@
   box-shadow: 0 8px 26px rgba(0,0,0,0.45), 0 0 34px rgba(255,215,0,0.22);
 }
 
-/* Logo image itself — contained, never stretched/cropped, no stray white box */
+/* Logo image itself */
 .exp-card__logo-img {
   width: 100%;
   height: 100%;
@@ -425,7 +424,7 @@
   font-size: clamp(1.10rem, 1.8vw, 1.38rem);
   font-weight: 800;
   letter-spacing: -0.016em;
-  color: var(--text-primary, #fff);
+  color: #FFFFFF;   /* ★ pure white, was var(--text-primary, #fff) */
   line-height: 1.22;
   transition: color 0.28s ease;
 }
@@ -460,7 +459,7 @@
 .exp-card__desc {
   font-size: 0.92rem;
   line-height: 1.82;
-  color: var(--text-secondary, rgba(255,255,255,0.62));
+  color: rgba(255,255,255,0.88);   /* ★ brighter — was 0.62 */
   margin-bottom: 22px;
 }
 
@@ -489,12 +488,12 @@
   gap: 12px;
   font-size: 0.875rem;
   line-height: 1.75;
-  color: var(--text-dim, rgba(255,255,255,0.72));
+  color: rgba(255,255,255,0.92);   /* ★ brighter — was 0.72 */
   margin-bottom: 10px;
   transition: color 0.25s ease, transform 0.25s ease;
 }
 .exp-card__list li:hover {
-  color: var(--text-primary, #fff);
+  color: #FFFFFF;   /* ★ pure white on hover */
   transform: translateX(5px);
 }
 .exp-card__bullet {
@@ -548,7 +547,7 @@
   transform: translateY(-4px);
   background: rgba(255,215,0,0.14);
   border-color: rgba(255,215,0,0.50);
-  color: #fff;
+  color: #FFFFFF;   /* ★ pure white, was #fff (same value, kept explicit) */
   box-shadow: 0 6px 22px rgba(255,215,0,0.20), 0 0 18px rgba(255,215,0,0.14);
 }
 .exp-card__tag:hover .exp-card__tag-shine { left: 150%; }
@@ -633,7 +632,6 @@
     padding-bottom: 60px;
     align-items: flex-start;
   }
-  /* hide alternating date badge, show inline mobile duration */
   .exp-item__date-wrap { display: none; }
   .exp-card__duration-mobile {
     display: inline-flex;
@@ -650,14 +648,12 @@
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
-  /* node absolutely anchored to the left line */
   .exp-item__node {
     position: absolute;
     left: 17px;
     top: 14px;
     padding-top: 0;
   }
-  /* card takes full width */
   .exp-item--left .exp-card,
   .exp-item--right .exp-card {
     width: 100%;
@@ -688,4 +684,3 @@
   .exp-header__title { font-size: 2.4rem; }
   .exp-header { margin-bottom: 56px; }
 }
-
