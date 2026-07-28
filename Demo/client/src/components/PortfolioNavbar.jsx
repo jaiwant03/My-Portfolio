@@ -8,6 +8,7 @@ const navItems = [
   { id: "coding-activity",label: "Activity"       },
   { id: "projects",       label: "Projects"       },
   { id: "experience",     label: "Experience"     },
+  { id: "achievements",   label: "Achievements"   },
   { id: "certifications", label: "Certifications" },
   { id: "ai-tools",       label: "AI Tools"       },
   { id: "contact",        label: "Contact"        },

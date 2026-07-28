@@ -1,0 +1,238 @@
+/* ==========================================================
+   ACHIEVEMENTS PAGE
+========================================================== */
+
+.achievements-page {
+    min-height: 100vh;
+    padding: 120px 8%;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.achievements-page h1 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-align: center;
+
+    background: linear-gradient(
+        90deg,
+        #ffd700,
+        #ffffff,
+        #B8760B
+    );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.achievements-page::after {
+    content: "";
+    width: 120px;
+    height: 4px;
+    margin-bottom: 60px;
+    border-radius: 100px;
+    background: linear-gradient(90deg,#ffd700,#B8760B);
+}
+
+/* ==========================================================
+   GRID
+========================================================== */
+
+.achievement-grid {
+    width: 100%;
+    max-width: 1400px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    gap: 35px;
+}
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+.achievement-card{
+    position: relative;
+    padding: 35px;
+    border-radius: 28px;
+    background: rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    overflow:hidden;
+    transition:.4s ease;
+    cursor:pointer;
+}
+
+/* Golden top border */
+.achievement-card::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(
+        90deg,
+        #ffd700,
+        #ffef85,
+        #B8760B
+    );
+}
+
+/* Glow */
+.achievement-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(
+        circle at top right,
+        rgba(255,215,0,.12),
+        transparent 55%
+    );
+    opacity:0;
+    transition:.4s;
+}
+
+.achievement-card:hover::after{
+    opacity:1;
+}
+
+/* Hover */
+.achievement-card:hover{
+    transform:translateY(-12px);
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.45),
+        0 0 35px rgba(255,215,0,.18);
+    border-color:rgba(255,215,0,.35);
+}
+
+/* ==========================================================
+   NUMBER
+========================================================== */
+
+.achievement-card h2{
+    font-size:3.2rem;
+    margin-bottom:10px;
+    font-weight:800;
+    color:#FFD700;
+}
+
+/* ==========================================================
+   TITLE
+========================================================== */
+
+.achievement-card h3{
+    color:#fff;
+    font-size:1.45rem;
+    margin-bottom:18px;
+    font-weight:700;
+}
+
+/* ==========================================================
+   DESCRIPTION
+========================================================== */
+
+.achievement-card p{
+    color:#d6d6d6;
+    line-height:1.8;
+    font-size:1rem;
+}
+
+/* ==========================================================
+   LIGHT MODE
+   Everything above assumes a dark background. None of those
+   colors (white heading text, rgba(255,255,255,.05) card fill,
+   #d6d6d6 paragraph text) have any contrast against a light
+   background, which is why cards look "washed out" and text
+   nearly disappears when the toggle is switched. This block
+   overrides just the colors that break, using the same
+   [data-theme="light"] pattern the rest of the site uses.
+========================================================== */
+
+[data-theme="light"] .achievements-page h1 {
+    background: linear-gradient(
+        90deg,
+        #B8760B,
+        #3a3a3a,
+        #B8760B
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .achievement-card {
+    background: rgba(255,255,255,.72);
+    border: 1px solid rgba(184,118,11,.16);
+    box-shadow: 0 4px 22px rgba(0,0,0,.08);
+}
+
+[data-theme="light"] .achievement-card::after {
+    background: radial-gradient(
+        circle at top right,
+        rgba(184,118,11,.12),
+        transparent 55%
+    );
+}
+
+[data-theme="light"] .achievement-card:hover {
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.12),
+        0 0 32px rgba(184,118,11,.20);
+    border-color: rgba(184,118,11,.40);
+}
+
+[data-theme="light"] .achievement-card h2 {
+    color: #B8760B;
+}
+
+[data-theme="light"] .achievement-card h3 {
+    color: #1a1a1a;
+}
+
+[data-theme="light"] .achievement-card p {
+    color: #4a4a4a;
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:992px){
+    .achievement-grid{
+        grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    }
+}
+
+@media(max-width:768px){
+    .achievements-page{
+        padding:100px 25px;
+    }
+
+    .achievements-page h1{
+        font-size:2.8rem;
+    }
+
+    .achievement-card{
+        padding:28px;
+    }
+
+    .achievement-card h2{
+        font-size:2.5rem;
+    }
+}
+
+@media(max-width:480px){
+    .achievement-grid{
+        grid-template-columns:1fr;
+    }
+}

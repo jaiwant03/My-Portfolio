@@ -43,7 +43,7 @@ export default function Experience() {
   logo: infosysLogo,
   role: "Artificial Intelligence Intern",
   type: "Internship",
-  duration: "Jun 2026 – Jul 2026",
+  duration: "Jun 2026 – Aug 2026",
   description:
     "Designed and developed an AI Powered Query Resolution System by leveraging Retrieval-Augmented Generation (RAG), Large Language Models, and vector search to deliver accurate, context-aware responses from knowledge bases.",
   achievements: [

@@ -7,6 +7,7 @@ import Skills         from "./Skills";
 import CodingStats    from "../components/CodingStats/CodingStats";
 import Projects       from "./Projects";
 import Experience     from "./Experience";
+import Achievements from "./Achievements";
 import Certifications from "./Certifications";
 import AIToolsKnown   from "./AIToolsKnown";
 import Contact        from "./Contact";
@@ -17,7 +18,7 @@ import ScrollToTop        from "../components/CodingStats/ScrollToTop";
 
 const SECTION_IDS = [
   "home","about","skills","coding-activity","projects",
-  "experience","certifications","ai-tools","contact",
+  "experience","achievements","certifications","ai-tools","contact",
 ];
 
 /* ── helpers ────────────────────────────────────────────── */
@@ -89,16 +90,22 @@ export default function MainPortfolio({ initialSection }) {
         setScrollPct(pct);
 
         /* active section */
-        if (isScrollingRef.current) return;
-        const mid = scrollTop + clientHeight * 0.38;
-        let current = SECTION_IDS[0];
-        SECTION_IDS.forEach(id => {
-          const el = document.getElementById(id);
-          if (el && mid >= el.offsetTop && mid <= el.offsetTop + el.offsetHeight) {
-            current = id;
-          }
-        });
-        setActiveSection(current);
+/* active section */
+if (isScrollingRef.current) return;
+
+let current = "home";
+
+for (const id of SECTION_IDS) {
+  const el = document.getElementById(id);
+
+  if (!el) continue;
+
+  if (scrollTop >= el.offsetTop - 120) {
+    current = id;
+  }
+}
+
+setActiveSection(current);
       });
     };
 
@@ -190,6 +197,10 @@ export default function MainPortfolio({ initialSection }) {
         {/* ── EXPERIENCE ──────────────────────────────────── */}
         <div id="experience" className="section-wrapper">
           <Experience />
+        </div>
+
+        <div id="achievements" className="section-wrapper">
+        <Achievements />
         </div>
 
         {/* ── CERTIFICATIONS ──────────────────────────────── */}

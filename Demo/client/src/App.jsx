@@ -55,6 +55,16 @@ function App() {
           </ProtectedRoute>
         }
       />
+
+      <Route
+    path="/achievements"
+        element={
+         <ProtectedRoute>
+            <MainPortfolio initialSection="achievements" />
+         </ProtectedRoute>
+        }
+      />
+
       <Route
         path="/certifications"
         element={

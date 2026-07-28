@@ -320,3 +320,20 @@
     gap: 12px;
   }
 }
+
+/* Golden top border for each skill card */
+.skill-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        #ffd700,
+        #ffef85,
+        #B8760B
+    );
+    border-radius: 12px 12px 0 0;
+}
