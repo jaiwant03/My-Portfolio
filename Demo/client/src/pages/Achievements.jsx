@@ -1,36 +1,53 @@
 import "../styles/achievements.css";
 
 const achievements = [
-  {
-    title: "Internships",
-    value: "3+",
-    description: "Completed internships in Full Stack Development, Data Analytics, and Artificial Intelligence."
-  },
-  {
-    title: "Projects",
-    value: "25+",
-    description: "Developed AI, Web Development, Data Science, and Full Stack applications."
-  },
-  {
-    title: "Global Certifications",
-    value: "6",
-    description: "Earned internationally recognized certifications from leading technology platforms."
-  },
-  {
-    title: "Technical Skills",
-    value: "30+",
-    description: "Experienced with programming languages, frameworks, databases, AI tools, and cloud technologies."
-  },
-  {
-    title: "AI Tools",
-    value: "15+",
-    description: "Worked with modern AI tools for development, automation, productivity, and research."
-  },
-  {
-    title: "Problem Solving",
-    value: "500+",
-    description: "Solved coding problems across LeetCode and CodeChef to strengthen DSA skills."
-  }
+{
+  title: "Thooral Hackathon",
+  value: "1st Place",
+  description: (
+    <>
+      Crowned <strong>Champion</strong> at the{" "}
+      <strong>Thooral Hackathon</strong>, securing{" "}
+      <strong>1st Place</strong> and a{" "}
+      <strong>₹15,000 Cash Prize</strong>. The competition was conducted by{" "}
+      <strong>PSG College of Technology - Thooral Hackathon</strong>, where our team delivered an{" "}
+      <strong>innovative</strong> and{" "}
+      <strong>high-impact solution</strong> under competitive conditions.
+    </>
+  )
+},
+{
+  title: "Code 'O' Clock Hackathon",
+  value: "3rd Place",
+  description: (
+    <>
+  Secured <strong>3rd Place</strong> at the{" "}
+  <strong>Code 'O' Clock Hackathon</strong> organized by{" "}
+  <strong>Coimbatore Institute of Technology (CIT)</strong>. Demonstrated{" "}
+  <strong>exceptional problem-solving</strong>,{" "}
+  <strong>team collaboration</strong>, and{" "}
+  <strong>technical innovation</strong> to develop an impactful solution during
+  the hackathon.
+</>
+  )
+},
+{
+  title: "International Credentials",
+  value: "6+",
+  description: (
+    <>
+      Earned <strong>6+ internationally recognized certifications</strong> from{" "}
+      <strong>leading global technology platforms</strong>, demonstrating{" "}
+      <strong>continuous learning</strong>,{" "}
+      <strong>technical excellence</strong>, and{" "}
+      <strong>industry-ready expertise</strong> across{" "}
+      <strong>Artificial Intelligence</strong>,{" "}
+      <strong>Data Science</strong>, and{" "}
+      <strong>Full-Stack Development</strong>.
+    </>
+  )
+},
+
 ];
 
 function Achievements() {
