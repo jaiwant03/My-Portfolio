@@ -1,6 +1,6 @@
 import "../styles/experience.css";
-import yaaneLogo from "../assets/experience/yaane.png";
-import bookmyvenueLogo from "../assets/experience/bookmyWenue.png";
+import yaaneLogo from "../assets/experience/Yaane.png";
+import bookmyvenueLogo from "../assets/experience/bookmywenue.png";
 import infosysLogo from "../assets/experience/infosys.png";
 
 export default function Experience() {
