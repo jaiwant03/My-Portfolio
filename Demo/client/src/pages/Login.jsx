@@ -63,7 +63,9 @@ function Login() {
 
   // 🌐 Google login redirect
   const handleGoogleLogin = () => {
-    window.location.href = `${API_BASE_URL}/auth/google`;
+    const url = `${API_BASE_URL}/auth/google`;
+    console.log("Google OAuth redirect →", url); // debug: confirm correct URL
+    window.location.href = url;
   };
 
   return (
