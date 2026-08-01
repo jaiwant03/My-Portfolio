@@ -419,3 +419,109 @@
   .about-heading { font-size: 2.4rem; }
   .about-grid    { gap: 16px; }
 }
+
+/* ============================================================
+   ABOUT — RESPONSIVE  (all breakpoints)
+   ============================================================ */
+
+/* ── ≤ 1200px ─────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .about-section {
+    padding-left: clamp(28px, 5vw, 80px);
+    padding-right: clamp(28px, 5vw, 80px);
+  }
+  .about-wrap { gap: 44px; }
+}
+
+/* ── ≤ 992px ─────────────────────────────────────────────── */
+@media (max-width: 992px) {
+  .about-section {
+    padding: calc(var(--navbar-h, 72px) + 56px) clamp(22px, 4vw, 56px) 96px;
+  }
+  .about-stats { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .about-grid  { grid-template-columns: 1fr; gap: 18px; }
+  .about-bio   { padding: 38px 36px; }
+  .about-heading { font-size: clamp(2.4rem, 5.5vw, 3.6rem); }
+  .about-lead  { font-size: 1rem; }
+}
+
+/* ── ≤ 768px ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .about-section {
+    padding: calc(var(--navbar-h, 72px) + 44px) 22px 80px;
+  }
+  .about-wrap  { gap: 36px; }
+  .about-stats { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .about-stat  { padding: 24px 16px; border-radius: 16px; }
+  .about-stat__value { font-size: clamp(1.6rem, 4vw, 2.2rem); }
+  .about-stat__label { font-size: 0.72rem; }
+  .about-grid  { gap: 14px; }
+  .about-card  { padding: 28px 26px; border-radius: 20px; }
+  .about-card__title { font-size: 1.08rem; }
+  .about-card__body  { font-size: 0.88rem; }
+  .about-bio   { padding: 30px 24px; border-radius: 20px; }
+  .about-bio__inner p { font-size: 0.97rem; line-height: 1.85; }
+  .about-heading { font-size: clamp(2rem, 7vw, 3rem); }
+  .about-lead  { font-size: 0.97rem; }
+  .about-eyebrow { font-size: 0.72rem; padding: 7px 18px; }
+}
+
+/* ── ≤ 576px ─────────────────────────────────────────────── */
+@media (max-width: 576px) {
+  .about-section { padding-inline: 18px; }
+  .about-wrap    { gap: 28px; }
+  /* Stack stats to 1 col on narrow but keep 2 where space allows */
+  .about-stats   { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .about-stat    { padding: 20px 12px; }
+  .about-stat__value { font-size: clamp(1.5rem, 6vw, 2rem); }
+  .about-card    { padding: 24px 20px; }
+  .about-card__icon { font-size: 1.5rem; }
+  .about-bio     { padding: 26px 20px; }
+  .about-bio__inner p { font-size: 0.92rem; }
+  .about-heading { font-size: clamp(1.85rem, 8vw, 2.6rem); }
+  .about-heading::after { width: 48px; }
+}
+
+/* ── ≤ 480px ─────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .about-section { padding-inline: 16px; }
+  /* Single column stats when cards are very narrow */
+  .about-stats   { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .about-stat    { padding: 18px 10px; border-radius: 14px; }
+  .about-stat__value { font-size: 1.5rem; }
+  .about-card    { padding: 22px 18px; border-radius: 18px; }
+  .about-bio     { padding: 24px 18px; border-radius: 18px; }
+  .about-bio__inner p { font-size: 0.90rem; }
+  .about-heading { font-size: clamp(1.7rem, 8.5vw, 2.2rem); }
+  .about-lead    { font-size: 0.93rem; }
+}
+
+/* ── ≤ 375px ─────────────────────────────────────────────── */
+@media (max-width: 375px) {
+  .about-section { padding-inline: 14px; }
+  .about-stats   { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .about-stat    { padding: 16px 8px; }
+  .about-stat__value { font-size: 1.35rem; }
+  .about-stat__label { font-size: 0.65rem; letter-spacing: 0.08em; }
+  .about-card    { padding: 20px 16px; }
+  .about-card__title { font-size: 1rem; }
+  .about-bio     { padding: 20px 16px; }
+  .about-bio__inner p { font-size: 0.87rem; }
+  .about-heading { font-size: 1.6rem; }
+  .about-eyebrow { font-size: 0.68rem; padding: 6px 14px; }
+}
+
+/* ── ≤ 320px ─────────────────────────────────────────────── */
+@media (max-width: 320px) {
+  .about-section { padding-inline: 12px; }
+  .about-stats   { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .about-stat    { padding: 14px 6px; border-radius: 12px; }
+  .about-stat__value { font-size: 1.2rem; }
+  .about-stat__label { font-size: 0.60rem; }
+  .about-card    { padding: 18px 14px; border-radius: 16px; }
+  .about-card__body { font-size: 0.84rem; }
+  .about-bio     { padding: 18px 14px; }
+  .about-heading { font-size: 1.45rem; }
+  /* Disable 3D tilt on tiny screens to prevent overflow */
+  .about-card:hover { transform: translateY(-6px) scale(1.01); }
+}

@@ -1,0 +1,169 @@
+/* ============================================================
+   PORTFOLIO NAVBAR  |  Responsive styles
+   Desktop: horizontal pill links (unchanged)
+   ≤820px : hamburger + sliding drawer
+   ============================================================ */
+
+/* ── Desktop nav links container ────────────────────────── */
+.pnav__links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: nowrap;
+  /* push away from logo on left and controls on right */
+  padding: 0 clamp(80px, 12vw, 160px);
+}
+
+/* ── Hamburger button ────────────────────────────────────── */
+.pnav__hamburger {
+  display: none;            /* hidden on desktop */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,215,0,0.22);
+  background: rgba(255,215,0,0.06);
+  cursor: pointer;
+  transition: background 0.22s ease, border-color 0.22s ease;
+  flex-shrink: 0;
+}
+.pnav__hamburger:hover {
+  background: rgba(255,215,0,0.13);
+  border-color: rgba(255,215,0,0.45);
+}
+[data-theme="light"] .pnav__hamburger {
+  border-color: rgba(184,118,11,0.22);
+  background:   rgba(184,118,11,0.06);
+}
+[data-theme="light"] .pnav__hamburger:hover {
+  background:   rgba(184,118,11,0.13);
+  border-color: rgba(184,118,11,0.45);
+}
+
+/* The three bars */
+.pnav__hamburger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ham-color, #FFD700);
+  transition: transform 0.28s ease, opacity 0.22s ease, width 0.22s ease;
+  transform-origin: center;
+}
+
+/* Animate to ✕ when open */
+.pnav__hamburger--open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.pnav__hamburger--open span:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+.pnav__hamburger--open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile drawer ───────────────────────────────────────── */
+.pnav__drawer {
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 16px 20px;
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.40);
+  /* closed state */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition:
+    max-height 0.38s cubic-bezier(0.25,1,0.5,1),
+    opacity    0.28s ease,
+    transform  0.32s cubic-bezier(0.25,1,0.5,1);
+}
+.pnav__drawer--open {
+  max-height: 600px;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* ── Breakpoint: ≤ 1024px — reduce link padding ─────────── */
+@media (max-width: 1024px) {
+  .pnav__links {
+    gap: 1px;
+    padding: 0 clamp(72px, 10vw, 120px);
+  }
+  .pnav__links a {
+    padding: 5px 9px !important;
+    font-size: 0.78rem !important;
+  }
+}
+
+/* ── Breakpoint: ≤ 992px — tighter still ─────────────────── */
+@media (max-width: 992px) {
+  .pnav__links {
+    padding: 0 clamp(64px, 9vw, 110px);
+  }
+  .pnav__links a {
+    padding: 5px 8px !important;
+    font-size: 0.76rem !important;
+    letter-spacing: 0.01em !important;
+  }
+}
+
+/* ── Breakpoint: ≤ 820px — switch to hamburger ──────────── */
+@media (max-width: 820px) {
+  /* Hide desktop links */
+  .pnav__links { display: none; }
+
+  /* Show hamburger */
+  .pnav__hamburger { display: flex; }
+
+  /* Hide desktop logout (shown in drawer instead) */
+  .pnav__logout { display: none !important; }
+
+  /* Drawer is shown as block */
+  .pnav__drawer { display: flex; }
+}
+
+/* ── Breakpoint: ≤ 576px ─────────────────────────────────── */
+@media (max-width: 576px) {
+  .pnav__drawer {
+    top: 68px;
+    padding: 10px 14px 16px;
+    gap: 2px;
+  }
+  .pnav__hamburger { width: 36px; height: 36px; gap: 4px; }
+  .pnav__hamburger span { width: 16px; }
+  .pnav__hamburger--open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .pnav__hamburger--open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+}
+
+/* ── Breakpoint: ≤ 375px ─────────────────────────────────── */
+@media (max-width: 375px) {
+  .pnav__drawer { padding: 8px 12px 14px; }
+  .pnav__hamburger { width: 34px; height: 34px; padding: 7px; }
+  .pnav__hamburger span { width: 15px; }
+}
+
+/* ── Breakpoint: ≤ 320px ─────────────────────────────────── */
+@media (max-width: 320px) {
+  .pnav__drawer {
+    padding: 6px 10px 12px;
+    gap: 1px;
+  }
+  .pnav__hamburger { width: 32px; height: 32px; }
+  .pnav__hamburger span { width: 14px; }
+}

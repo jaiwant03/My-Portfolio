@@ -3,6 +3,7 @@
 # ==========================================
 client/node_modules/
 server/node_modules/
+node_modules/
 
 # ==========================================
 # Build Output
@@ -14,13 +15,17 @@ server/build/
 
 # ==========================================
 # Environment Variables
+# IMPORTANT: .env files contain secrets and must NEVER be committed.
+# .env.example files are safe to commit — they contain no real secrets.
 # ==========================================
 .env
-.env.*
 client/.env
-client/.env.*
 server/.env
-server/.env.*
+
+# Allow example files (they contain no secrets)
+!.env.example
+!client/.env.example
+!server/.env.example
 
 # ==========================================
 # Logs

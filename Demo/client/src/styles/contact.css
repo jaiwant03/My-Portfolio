@@ -332,3 +332,114 @@
   .contact-wrapper { grid-template-columns: 1fr; gap: 28px; }
   .contact-form, .contact-info { padding: 38px 28px; }
 }
+
+/* ============================================================
+   CONTACT — RESPONSIVE  (all breakpoints)
+   ============================================================ */
+
+/* ── ≤ 1200px ─────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .contact-page {
+    padding-left: clamp(28px, 5vw, 80px);
+    padding-right: clamp(28px, 5vw, 80px);
+  }
+  .contact-wrapper { gap: 32px; max-width: 100%; }
+  .contact-form,
+  .contact-info    { padding: 44px 40px; }
+}
+
+/* ── ≤ 992px ─────────────────────────────────────────────── */
+@media (max-width: 992px) {
+  .contact-page {
+    padding: calc(var(--navbar-h, 72px) + 52px) clamp(22px, 4vw, 48px) 96px;
+  }
+  .contact-header { margin-bottom: 60px; }
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    max-width: 620px;
+    margin-inline: auto;
+  }
+  .contact-form,
+  .contact-info  { padding: 38px 34px; }
+  .contact-header h1 { font-size: clamp(2.2rem, 5.5vw, 3.4rem); }
+}
+
+/* ── ≤ 768px ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .contact-page {
+    padding: calc(var(--navbar-h, 72px) + 40px) 22px 80px;
+  }
+  .contact-header h1 { font-size: clamp(2rem, 7vw, 3rem); }
+  .contact-header p  { font-size: 0.97rem; }
+  .contact-header    { margin-bottom: 48px; }
+  .contact-form,
+  .contact-info  { padding: 32px 28px; border-radius: 20px; }
+  .contact-form input,
+  .contact-form textarea { padding: 15px 18px; font-size: 0.93rem; }
+  .contact-form textarea { min-height: 130px; }
+  .send-btn { padding: 15px 22px; font-size: 0.92rem; }
+  .contact-info h2 { font-size: 1.45rem; margin-bottom: 28px; }
+  .info-card { padding: 16px 18px; font-size: 0.93rem; gap: 13px; }
+}
+
+/* ── ≤ 576px ─────────────────────────────────────────────── */
+@media (max-width: 576px) {
+  .contact-page { padding-inline: 18px; }
+  .contact-header h1 { font-size: clamp(1.85rem, 8vw, 2.6rem); }
+  .contact-header p  { font-size: 0.93rem; max-width: 100%; }
+  .contact-form,
+  .contact-info  { padding: 28px 22px; border-radius: 18px; }
+  .contact-form input,
+  .contact-form textarea {
+    padding: 14px 16px;
+    font-size: 0.91rem;
+    margin-bottom: 16px;
+    border-radius: 13px;
+  }
+  .contact-form textarea { min-height: 120px; }
+  .send-btn { padding: 14px; font-size: 0.90rem; letter-spacing: 0.04em; }
+  .contact-info h2  { font-size: 1.32rem; }
+  .info-card { padding: 14px 16px; font-size: 0.90rem; border-radius: 13px; }
+}
+
+/* ── ≤ 480px ─────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .contact-page { padding-inline: 16px; }
+  .contact-header h1 { font-size: clamp(1.7rem, 9vw, 2.2rem); }
+  .contact-form,
+  .contact-info  { padding: 24px 18px; border-radius: 16px; }
+  .contact-form input,
+  .contact-form textarea { padding: 13px 14px; font-size: 0.89rem; border-radius: 12px; }
+  .contact-form textarea { min-height: 110px; }
+  .send-btn { font-size: 0.87rem; padding: 13px; }
+  .info-card { padding: 12px 14px; font-size: 0.87rem; gap: 12px; border-radius: 12px; }
+  .contact-info h2  { font-size: 1.24rem; }
+}
+
+/* ── ≤ 375px ─────────────────────────────────────────────── */
+@media (max-width: 375px) {
+  .contact-page { padding-inline: 14px; }
+  .contact-header h1 { font-size: 1.6rem; }
+  .contact-form,
+  .contact-info  { padding: 20px 16px; border-radius: 14px; }
+  .contact-form input,
+  .contact-form textarea { padding: 12px 13px; font-size: 0.87rem; border-radius: 11px; margin-bottom: 14px; }
+  .contact-form textarea { min-height: 100px; }
+  .send-btn { font-size: 0.84rem; letter-spacing: 0.03em; }
+  .info-card { padding: 11px 12px; font-size: 0.84rem; gap: 10px; border-radius: 11px; }
+  .info-card:hover { transform: translateX(6px) scale(1.005); }
+}
+
+/* ── ≤ 320px ─────────────────────────────────────────────── */
+@media (max-width: 320px) {
+  .contact-page { padding-inline: 12px; }
+  .contact-header h1 { font-size: 1.45rem; }
+  .contact-header p  { font-size: 0.85rem; }
+  .contact-form,
+  .contact-info  { padding: 18px 14px; border-radius: 12px; }
+  .contact-form input,
+  .contact-form textarea { padding: 11px 12px; font-size: 0.85rem; margin-bottom: 12px; }
+  .send-btn { font-size: 0.82rem; letter-spacing: 0.02em; }
+  .info-card { font-size: 0.82rem; padding: 10px 11px; }
+}

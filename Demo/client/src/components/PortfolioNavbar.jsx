@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import "./navbar.css";
 
 const navItems = [
   { id: "home",           label: "Home"           },
@@ -21,7 +22,8 @@ export default function PortfolioNavbar({
   onToggleTheme,
 }) {
   const navigate  = useNavigate();
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled,  setScrolled]  = useState(false);
+  const [menuOpen,  setMenuOpen]  = useState(false);
 
   /* darken nav slightly once user has scrolled */
   useEffect(() => {
@@ -32,125 +34,153 @@ export default function PortfolioNavbar({
     return () => el.removeEventListener("scroll", handler);
   }, []);
 
+  /* close mobile menu on resize to desktop */
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 820) setMenuOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  /* close mobile menu when clicking outside */
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handler = (e) => {
+      if (!e.target.closest(".pnav")) setMenuOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [menuOpen]);
+
   const logout = () => {
     localStorage.removeItem("token");
     navigate("/login");
   };
 
-  const handleClick = (e, item) => {
+  const handleClick = useCallback((e, item) => {
     e.preventDefault();
+    setMenuOpen(false);
     if (onNavClick) onNavClick(item.id);
-  };
+  }, [onNavClick]);
 
   /* ── colours driven by theme ──────────────────────────── */
   const isDark = theme === "dark";
   const navBg  = isDark
-    ? `rgba(5,5,5,${scrolled ? 0.88 : 0.72})`
-    : `rgba(248,246,240,${scrolled ? 0.95 : 0.82})`;
-  const borderCol = isDark
-    ? "rgba(255,215,0,0.18)"
-    : "rgba(184,134,11,0.20)";
-  const activeColor   = isDark ? "#FFD700" : "#B8860B";
-  const inactiveColor = isDark ? "rgba(255,255,255,0.60)" : "rgba(13,11,8,0.62)";
-  const activeBg      = isDark ? "rgba(255,215,0,0.10)" : "rgba(184,134,11,0.10)";
-  const activeBorder  = isDark ? "rgba(255,215,0,0.30)" : "rgba(184,134,11,0.30)";
+    ? `rgba(5,5,5,${scrolled ? 0.92 : 0.78})`
+    : `rgba(248,246,240,${scrolled ? 0.97 : 0.88})`;
+  const borderCol     = isDark ? "rgba(255,215,0,0.18)"    : "rgba(184,134,11,0.20)";
+  const activeColor   = isDark ? "#FFD700"                 : "#B8860B";
+  const inactiveColor = isDark ? "rgba(255,255,255,0.60)"  : "rgba(13,11,8,0.62)";
+  const activeBg      = isDark ? "rgba(255,215,0,0.10)"    : "rgba(184,134,11,0.10)";
+  const activeBorder  = isDark ? "rgba(255,215,0,0.30)"    : "rgba(184,134,11,0.30)";
   const logoGrad      = isDark
     ? "linear-gradient(135deg,#FFC107,#FFD700)"
     : "linear-gradient(135deg,#B8860B,#C9A84C)";
-  const logoutBg      = isDark ? "rgba(255,215,0,0.07)" : "rgba(184,134,11,0.07)";
-  const logoutBorder  = isDark ? "rgba(255,215,0,0.25)" : "rgba(184,134,11,0.25)";
-  const logoutColor   = isDark ? "rgba(255,215,0,0.85)" : "rgba(139,105,20,0.88)";
+  const logoutBg      = isDark ? "rgba(255,215,0,0.07)"    : "rgba(184,134,11,0.07)";
+  const logoutBorder  = isDark ? "rgba(255,215,0,0.25)"    : "rgba(184,134,11,0.25)";
+  const logoutColor   = isDark ? "rgba(255,215,0,0.85)"    : "rgba(139,105,20,0.88)";
+  const drawerBg      = isDark ? "rgba(5,5,5,0.97)"        : "rgba(248,246,240,0.98)";
+  const hamburgerColor = isDark ? "#FFD700" : "#B8860B";
 
   return (
-    <nav style={{
-      position:       "fixed",
-      top: 0, left: 0, right: 0,
-      zIndex:         1000,
-      height:         "68px",
-      padding:        "0 clamp(12px,3vw,36px)",
-      display:        "flex",
-      alignItems:     "center",
-      justifyContent: "center",
-      gap:            "2px",
-      flexWrap:       "nowrap",
-      background:     navBg,
-      backdropFilter: "blur(24px)",
-      WebkitBackdropFilter: "blur(24px)",
-      borderBottom:   `1px solid ${borderCol}`,
-      boxShadow:      `0 1px 0 ${borderCol}, 0 4px 32px rgba(0,0,0,${isDark?0.5:0.08})`,
-      transition:     "background 0.4s ease, box-shadow 0.4s ease",
-    }}>
-
-      {/* ── Logo ──────────────────────────────────────────── */}
+    <nav
+      className="pnav"
+      style={{
+        position:       "fixed",
+        top: 0, left: 0, right: 0,
+        zIndex:         1000,
+        height:         "68px",
+        padding:        "0 clamp(12px,3vw,36px)",
+        display:        "flex",
+        alignItems:     "center",
+        justifyContent: "center",
+        gap:            "2px",
+        flexWrap:       "nowrap",
+        background:     navBg,
+        backdropFilter: "blur(24px)",
+        WebkitBackdropFilter: "blur(24px)",
+        borderBottom:   `1px solid ${borderCol}`,
+        boxShadow:      `0 1px 0 ${borderCol}, 0 4px 32px rgba(0,0,0,${isDark?0.5:0.08})`,
+        transition:     "background 0.4s ease, box-shadow 0.4s ease",
+      }}
+    >
+      {/* ── Logo ────────────────────────────────────────── */}
       <span style={{
-        position:   "absolute",
-        left:       "clamp(12px,3vw,36px)",
-        fontFamily: "'Playfair Display',Georgia,serif",
-        fontWeight: 900,
-        fontSize:   "1.15rem",
+        position:      "absolute",
+        left:          "clamp(12px,3vw,36px)",
+        fontFamily:    "'Playfair Display',Georgia,serif",
+        fontWeight:    900,
+        fontSize:      "1.15rem",
         letterSpacing: "-0.02em",
-        background: logoGrad,
+        background:    logoGrad,
         WebkitBackgroundClip: "text",
         WebkitTextFillColor:  "transparent",
         backgroundClip: "text",
-        userSelect: "none",
-        cursor:     "default",
+        userSelect:    "none",
+        cursor:        "default",
+        zIndex:        2,
       }}>JK</span>
 
-      {/* ── Nav links ─────────────────────────────────────── */}
-      {navItems.map(item => {
-        const active = activeSection === item.id;
-        return (
-          <a
-            key={item.id}
-            href={`#${item.id}`}
-            onClick={e => handleClick(e, item)}
-            style={{
-              display:        "inline-flex",
-              alignItems:     "center",
-              padding:        "6px 12px",
-              borderRadius:   "999px",
-              fontSize:       "0.82rem",
-              fontWeight:     active ? 700 : 500,
-              letterSpacing:  "0.02em",
-              color:          active ? activeColor : inactiveColor,
-              background:     active ? activeBg    : "transparent",
-              border:         `1px solid ${active ? activeBorder : "transparent"}`,
-              textDecoration: "none",
-              textShadow:     active ? `0 0 14px ${isDark?"rgba(255,215,0,0.4)":"rgba(184,134,11,0.35)"}` : "none",
-              transition:     "all 0.25s ease",
-              cursor:         "pointer",
-              whiteSpace:     "nowrap",
-            }}
-            onMouseEnter={e => {
-              if (!active) {
-                e.currentTarget.style.color      = activeColor;
-                e.currentTarget.style.background = activeBg;
-                e.currentTarget.style.border     = `1px solid ${activeBorder}`;
-              }
-            }}
-            onMouseLeave={e => {
-              if (!active) {
-                e.currentTarget.style.color      = inactiveColor;
-                e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.border     = "1px solid transparent";
-              }
-            }}
-          >
-            {item.label}
-          </a>
-        );
-      })}
+      {/* ── Desktop Nav links ─────────────────────────────── */}
+      <div className="pnav__links">
+        {navItems.map(item => {
+          const active = activeSection === item.id;
+          return (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={e => handleClick(e, item)}
+              style={{
+                display:        "inline-flex",
+                alignItems:     "center",
+                padding:        "6px 12px",
+                borderRadius:   "999px",
+                fontSize:       "0.82rem",
+                fontWeight:     active ? 700 : 500,
+                letterSpacing:  "0.02em",
+                color:          active ? activeColor : inactiveColor,
+                background:     active ? activeBg    : "transparent",
+                border:         `1px solid ${active ? activeBorder : "transparent"}`,
+                textDecoration: "none",
+                textShadow:     active ? `0 0 14px ${isDark?"rgba(255,215,0,0.4)":"rgba(184,134,11,0.35)"}` : "none",
+                transition:     "all 0.25s ease",
+                cursor:         "pointer",
+                whiteSpace:     "nowrap",
+              }}
+              onMouseEnter={e => {
+                if (!active) {
+                  e.currentTarget.style.color      = activeColor;
+                  e.currentTarget.style.background = activeBg;
+                  e.currentTarget.style.border     = `1px solid ${activeBorder}`;
+                }
+              }}
+              onMouseLeave={e => {
+                if (!active) {
+                  e.currentTarget.style.color      = inactiveColor;
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.border     = "1px solid transparent";
+                }
+              }}
+            >
+              {item.label}
+            </a>
+          );
+        })}
+      </div>
 
-      {/* ── Right controls ────────────────────────────────── */}
-      <div style={{
-        position:   "absolute",
-        right:      "clamp(12px,3vw,36px)",
-        display:    "flex",
-        alignItems: "center",
-        gap:        "10px",
-      }}>
-        {/* Theme toggle */}
+      {/* ── Right controls ─────────────────────────────────── */}
+      <div
+        className="pnav__controls"
+        style={{
+          position:   "absolute",
+          right:      "clamp(12px,3vw,36px)",
+          display:    "flex",
+          alignItems: "center",
+          gap:        "10px",
+        }}
+      >
+        {/* Theme toggle — always visible */}
         {onToggleTheme && (
           <button
             className="theme-btn"
@@ -162,24 +192,25 @@ export default function PortfolioNavbar({
           </button>
         )}
 
-        {/* Logout */}
+        {/* Logout — hidden on mobile (shown in drawer) */}
         <button
+          className="pnav__logout"
           onClick={logout}
           style={{
-            display:      "inline-flex",
-            alignItems:   "center",
-            gap:          "6px",
-            padding:      "7px 16px",
-            borderRadius: "999px",
-            background:   logoutBg,
-            border:       `1px solid ${logoutBorder}`,
-            color:        logoutColor,
-            fontWeight:   600,
-            fontSize:     "0.8rem",
-            letterSpacing:"0.04em",
-            cursor:       "pointer",
-            transition:   "all 0.25s ease",
-            whiteSpace:   "nowrap",
+            display:       "inline-flex",
+            alignItems:    "center",
+            gap:           "6px",
+            padding:       "7px 16px",
+            borderRadius:  "999px",
+            background:    logoutBg,
+            border:        `1px solid ${logoutBorder}`,
+            color:         logoutColor,
+            fontWeight:    600,
+            fontSize:      "0.8rem",
+            letterSpacing: "0.04em",
+            cursor:        "pointer",
+            transition:    "all 0.25s ease",
+            whiteSpace:    "nowrap",
           }}
           onMouseEnter={e => {
             e.currentTarget.style.background  = isDark?"rgba(255,215,0,0.14)":"rgba(184,134,11,0.14)";
@@ -194,6 +225,85 @@ export default function PortfolioNavbar({
             e.currentTarget.style.color       = logoutColor;
             e.currentTarget.style.boxShadow   = "none";
             e.currentTarget.style.transform   = "none";
+          }}
+        >
+          Logout
+        </button>
+
+        {/* Hamburger — mobile only */}
+        <button
+          className={`pnav__hamburger${menuOpen ? " pnav__hamburger--open" : ""}`}
+          onClick={() => setMenuOpen(o => !o)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          style={{ "--ham-color": hamburgerColor }}
+        >
+          <span /><span /><span />
+        </button>
+      </div>
+
+      {/* ── Mobile drawer ──────────────────────────────────── */}
+      <div
+        className={`pnav__drawer${menuOpen ? " pnav__drawer--open" : ""}`}
+        style={{
+          background:    drawerBg,
+          borderBottom:  `1px solid ${borderCol}`,
+        }}
+        aria-hidden={!menuOpen}
+      >
+        {navItems.map(item => {
+          const active = activeSection === item.id;
+          return (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={e => handleClick(e, item)}
+              style={{
+                display:        "flex",
+                alignItems:     "center",
+                padding:        "13px 20px",
+                fontSize:       "0.95rem",
+                fontWeight:     active ? 700 : 500,
+                color:          active ? activeColor : inactiveColor,
+                background:     active ? activeBg    : "transparent",
+                borderRadius:   "12px",
+                textDecoration: "none",
+                letterSpacing:  "0.02em",
+                transition:     "all 0.22s ease",
+                borderLeft:     active ? `3px solid ${activeColor}` : "3px solid transparent",
+              }}
+            >
+              {item.label}
+              {active && (
+                <span style={{
+                  marginLeft:   "auto",
+                  width:        "6px",
+                  height:       "6px",
+                  borderRadius: "50%",
+                  background:   activeColor,
+                  boxShadow:    `0 0 8px ${activeColor}`,
+                }} />
+              )}
+            </a>
+          );
+        })}
+
+        {/* Logout in drawer */}
+        <button
+          onClick={() => { setMenuOpen(false); logout(); }}
+          style={{
+            margin:        "8px 0 4px",
+            padding:       "12px 20px",
+            borderRadius:  "12px",
+            background:    logoutBg,
+            border:        `1px solid ${logoutBorder}`,
+            color:         logoutColor,
+            fontWeight:    600,
+            fontSize:      "0.90rem",
+            letterSpacing: "0.04em",
+            cursor:        "pointer",
+            textAlign:     "left",
+            width:         "100%",
           }}
         >
           Logout

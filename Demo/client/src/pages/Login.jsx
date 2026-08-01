@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import CustomCursor from "../components/CustomCursor";
 import AuthBackground from "../components/AuthBackground";
+import API_BASE_URL from "../config/api";
 
 function Login() {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ function Login() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/login",
+        `${API_BASE_URL}/api/login`,
         form
       );
       localStorage.setItem("token", res.data.token);
@@ -62,7 +63,7 @@ function Login() {
 
   // 🌐 Google login redirect
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:5000/auth/google";
+    window.location.href = `${API_BASE_URL}/auth/google`;
   };
 
   return (

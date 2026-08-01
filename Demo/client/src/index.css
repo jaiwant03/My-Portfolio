@@ -60,8 +60,8 @@
   --radius-2xl:      48px;
   --radius-full:     9999px;
 
-  --section-px:      clamp(22px, 6vw, 110px);
-  --section-py:      clamp(90px, 11vh, 140px);
+  --section-px:      clamp(16px, 5vw, 110px);
+  --section-py:      clamp(72px, 10vh, 140px);
   --navbar-h:        72px;
 
   /* Motion */
@@ -662,3 +662,69 @@ button:focus-visible {
 
 /* ── Auth global resets ──────────────────────────────────── */
 .logo { height: auto; padding: 0; will-change: filter; transition: filter 300ms; }
+
+
+/* ============================================================
+   GLOBAL RESPONSIVE FOUNDATION  — added for full responsiveness
+   ============================================================ */
+
+/* Prevent ALL horizontal overflow at root level */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Images are never wider than their container */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Buttons & inputs inherit font and are touch-friendly */
+button, input, textarea, select {
+  font-family: var(--font-body);
+  min-height: 44px; /* WCAG touch target */
+  box-sizing: border-box;
+}
+
+/* Section padding responds to screen width */
+@media (max-width: 1200px) {
+  :root { --section-px: clamp(16px, 4vw, 80px); }
+}
+@media (max-width: 992px) {
+  :root { --section-px: clamp(16px, 4vw, 56px); }
+}
+@media (max-width: 768px) {
+  :root { --section-px: clamp(14px, 4vw, 32px); }
+}
+@media (max-width: 576px) {
+  :root { --section-px: 18px; }
+}
+@media (max-width: 480px) {
+  :root { --section-px: 16px; }
+}
+@media (max-width: 375px) {
+  :root { --section-px: 14px; }
+}
+@media (max-width: 320px) {
+  :root { --section-px: 12px; }
+}
+
+/* ── Scroll-to-top button responsive position ── */
+@media (max-width: 576px) {
+  .scroll-to-top-btn {
+    bottom: 20px;
+    right: 16px;
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* ── Theme button touch size ── */
+@media (max-width: 768px) {
+  .theme-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+}

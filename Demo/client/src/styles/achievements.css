@@ -615,3 +615,109 @@
 
     font-weight:700;
 }
+
+/* ============================================================
+   ACHIEVEMENTS — RESPONSIVE  (all breakpoints — extended)
+   ============================================================ */
+
+/* ── ≤ 1440px ─────────────────────────────────────────────── */
+@media (max-width: 1440px) {
+  .achievements-page { padding: 120px clamp(40px, 6vw, 120px); }
+  .achievement-grid  { max-width: 1300px; }
+}
+
+/* ── ≤ 1200px ─────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .achievements-page { padding: 110px clamp(28px, 5vw, 80px); }
+  .achievement-grid  {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+  }
+}
+
+/* ── ≤ 992px ─────────────────────────────────────────────── */
+@media (max-width: 992px) {
+  .achievements-page {
+    padding: calc(var(--navbar-h, 72px) + 52px) clamp(22px, 4vw, 48px) 96px;
+  }
+  .achievements-page h1 { font-size: clamp(2.4rem, 6vw, 3.4rem); }
+  .achievement-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+  }
+  .achievement-card { padding: 32px; border-radius: 26px; }
+  .achievement-card h2 { font-size: 2.8rem; }
+  .achievement-card h3 { font-size: 1.4rem; }
+  /* Tone down the continuous float so it doesn't look jittery with stacked cards */
+  .achievement-card { animation: achievementIdle 8s ease-in-out infinite; }
+}
+
+/* ── ≤ 768px ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .achievements-page {
+    padding: calc(var(--navbar-h, 72px) + 40px) 22px 80px;
+  }
+  .achievements-page h1 { font-size: clamp(2rem, 7vw, 3rem); letter-spacing: 1px; }
+  .achievement-grid {
+    grid-template-columns: 1fr;
+    max-width: 580px;
+    gap: 22px;
+  }
+  .achievement-card { min-height: auto; padding: 28px 26px; border-radius: 24px; }
+  .achievement-card h2 { font-size: 2.5rem; }
+  .achievement-card h2::after { width: 76px; height: 3px; bottom: -12px; }
+  .achievement-card h3 { font-size: 1.28rem; margin-bottom: 18px; }
+  .achievement-card p  { font-size: 0.95rem; line-height: 1.85; }
+  .achievement-card:hover { transform: translateY(-12px) scale(1.015); }
+}
+
+/* ── ≤ 576px ─────────────────────────────────────────────── */
+@media (max-width: 576px) {
+  .achievements-page { padding-inline: 18px; }
+  .achievements-page h1 { font-size: clamp(1.85rem, 8vw, 2.6rem); letter-spacing: 0.5px; }
+  .achievement-grid { gap: 18px; }
+  .achievement-card { padding: 26px 22px; border-radius: 22px; }
+  .achievement-card h2 { font-size: 2.2rem; }
+  .achievement-card h3 { font-size: 1.18rem; }
+  .achievement-card p  { font-size: 0.92rem; }
+  /* Disable idle float animation on small screens — saves battery, reduces jank */
+  .achievement-card { animation: none; }
+  .achievement-card:hover { animation: achievementFloat 2.8s ease-in-out infinite; }
+}
+
+/* ── ≤ 480px ─────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .achievements-page { padding-inline: 16px; }
+  .achievements-page h1 { font-size: clamp(1.7rem, 9vw, 2.2rem); }
+  .achievement-card { padding: 22px 18px; border-radius: 20px; }
+  .achievement-card h2 { font-size: 2rem; margin-bottom: 24px; }
+  .achievement-card h3 { font-size: 1.1rem; margin-bottom: 18px; }
+  .achievement-card p  { font-size: 0.88rem; line-height: 1.75; }
+  .achievement-card:hover { transform: translateY(-10px) scale(1.01); }
+}
+
+/* ── ≤ 375px ─────────────────────────────────────────────── */
+@media (max-width: 375px) {
+  .achievements-page { padding-inline: 14px; }
+  .achievements-page h1 { font-size: 1.6rem; letter-spacing: 0; }
+  .achievement-grid  { gap: 14px; }
+  .achievement-card  { padding: 20px 16px; border-radius: 18px; }
+  .achievement-card h2 { font-size: 1.8rem; margin-bottom: 22px; }
+  .achievement-card h2::after { width: 64px; }
+  .achievement-card h3 { font-size: 1.05rem; }
+  .achievement-card p  { font-size: 0.85rem; line-height: 1.7; }
+}
+
+/* ── ≤ 320px ─────────────────────────────────────────────── */
+@media (max-width: 320px) {
+  .achievements-page { padding-inline: 12px; }
+  .achievements-page h1 { font-size: 1.45rem; }
+  .achievement-grid  { gap: 12px; }
+  .achievement-card  { padding: 18px 14px; border-radius: 16px; }
+  .achievement-card h2 { font-size: 1.6rem; }
+  .achievement-card h3 { font-size: 1rem; }
+  .achievement-card p  { font-size: 0.82rem; }
+  /* Prevent the shine pseudo-element from causing overflow */
+  .achievement-card::after { display: none; }
+  .achievement-card:hover  { transform: translateY(-7px) scale(1.01); }
+}

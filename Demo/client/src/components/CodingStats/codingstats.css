@@ -729,3 +729,137 @@
 .scroll-to-top-btn:hover svg {
   transform: translateY(-1px);
 }
+
+/* ============================================================
+   CODING STATS — RESPONSIVE  (all breakpoints — extended)
+   ============================================================ */
+
+/* ── ≤ 1440px ─────────────────────────────────────────────── */
+@media (max-width: 1440px) {
+  .coding-stats-section {
+    padding: var(--section-py, 110px) clamp(32px, 5vw, 80px);
+  }
+}
+
+/* ── ≤ 1200px ─────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .coding-stats-section {
+    padding: var(--section-py, 100px) clamp(24px, 4vw, 64px);
+  }
+  .coding-stats-cards-grid { gap: 22px; }
+  .stats-glass-card { padding: 22px; }
+}
+
+/* ── ≤ 992px ─────────────────────────────────────────────── */
+/* (base rule already stacks to 1 col — extend it here) */
+@media (max-width: 992px) {
+  .coding-stats-section {
+    padding: calc(var(--navbar-h, 72px) + 52px) clamp(22px, 4vw, 48px) 96px;
+  }
+  .coding-stats-header { margin-bottom: 56px; }
+  .coding-stats-cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 680px;
+    gap: 22px;
+  }
+  .stats-glass-card { height: auto; max-height: none; padding: 24px; }
+  .stats-numbers-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+}
+
+/* ── ≤ 768px ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .coding-stats-section {
+    padding: calc(var(--navbar-h, 72px) + 40px) 22px 80px;
+  }
+  .coding-stats-header { margin-bottom: 48px; }
+  .coding-stats-header .main-heading  { font-size: clamp(2rem, 7vw, 3rem); }
+  .coding-stats-header .subtitle      { font-size: 1rem; }
+  .coding-stats-header .small-title   { font-size: 0.80rem; }
+  .coding-stats-cards-grid { gap: 18px; }
+  .stats-glass-card { padding: 20px; border-radius: 16px; }
+  .stats-card-title { font-size: 1.1rem; }
+  .stats-card-username { font-size: 0.80rem; padding: 5px 12px; }
+  .stat-num-value  { font-size: 1.2rem; }
+  .stat-num-label  { font-size: 0.68rem; }
+  .leetcode-profile-body {
+    grid-template-columns: 90px 1fr;
+    gap: 16px;
+  }
+  .leetcode-circular-progress { width: 84px; height: 84px; }
+  .leetcode-progress-val { font-size: 1.06rem; }
+  .github-heatmap-img { max-height: 95px; }
+}
+
+/* ── ≤ 576px ─────────────────────────────────────────────── */
+@media (max-width: 576px) {
+  .coding-stats-section { padding-inline: 18px; }
+  .coding-stats-header .main-heading  { font-size: clamp(1.85rem, 8vw, 2.6rem); }
+  .coding-stats-cards-grid { gap: 16px; }
+  .stats-glass-card { padding: 18px; border-radius: 14px; }
+  .stats-numbers-grid { grid-template-columns: repeat(3, 1fr); gap: 9px; }
+  .stat-num-box    { padding: 8px; }
+  .stat-num-value  { font-size: 1.1rem; }
+  .stats-card-header { flex-wrap: wrap; gap: 8px; margin-bottom: 14px; padding-bottom: 12px; }
+  .stats-card-title { font-size: 1.02rem; }
+  .leetcode-profile-body {
+    grid-template-columns: 80px 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .leetcode-circular-progress { width: 76px; height: 76px; }
+  .diff-bar-info  { font-size: 0.76rem; }
+  .github-heatmap-img { max-height: 85px; }
+  .github-readme-stats-img { margin-top: 8px; }
+  .leetcode-heatmap-grid { grid-template-columns: repeat(10, 1fr); padding: 8px; }
+}
+
+/* ── ≤ 480px ─────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .coding-stats-section { padding-inline: 16px; }
+  .coding-stats-header .main-heading  { font-size: clamp(1.7rem, 9vw, 2.2rem); }
+  .stats-glass-card { padding: 16px; }
+  .stats-numbers-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .stat-num-value  { font-size: 1rem; }
+  .stat-num-label  { font-size: 0.64rem; }
+  .leetcode-profile-body {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 14px;
+  }
+  .leetcode-circular-progress { width: 90px; height: 90px; }
+  .github-heatmap-img { max-height: 78px; }
+  .github-heatmap-container { padding: 10px; }
+  .leetcode-heatmap-grid { grid-template-columns: repeat(8, 1fr); }
+  /* Scroll-to-top button overlaps content less */
+  .scroll-to-top-btn { bottom: 16px; right: 12px; }
+}
+
+/* ── ≤ 375px ─────────────────────────────────────────────── */
+@media (max-width: 375px) {
+  .coding-stats-section { padding-inline: 14px; }
+  .coding-stats-header .main-heading  { font-size: 1.6rem; }
+  .stats-glass-card { padding: 14px; border-radius: 12px; }
+  .stats-numbers-grid { grid-template-columns: repeat(3, 1fr); gap: 7px; }
+  .stat-num-box    { padding: 7px; }
+  .stat-num-value  { font-size: 0.95rem; }
+  .stats-card-title { font-size: 0.96rem; gap: 9px; }
+  .title-icon      { width: 18px; height: 18px; }
+  .github-heatmap-img { max-height: 70px; }
+  .leetcode-heatmap-grid { grid-template-columns: repeat(7, 1fr); gap: 2px; padding: 6px; }
+  .heatmap-col     { gap: 2px; }
+}
+
+/* ── ≤ 320px ─────────────────────────────────────────────── */
+@media (max-width: 320px) {
+  .coding-stats-section { padding-inline: 12px; }
+  .coding-stats-header .main-heading  { font-size: 1.45rem; }
+  .stats-glass-card { padding: 12px; }
+  .stats-numbers-grid { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+  .stat-num-value  { font-size: 0.88rem; }
+  .stat-num-label  { font-size: 0.60rem; }
+  .stats-card-header { margin-bottom: 12px; padding-bottom: 10px; }
+  .github-heatmap-img { max-height: 62px; }
+  .leetcode-heatmap-grid { grid-template-columns: repeat(6, 1fr); }
+  /* Disable hover lift on 320 to avoid overflow */
+  .stats-glass-card:hover { transform: translateY(-5px) scale(1.005); }
+}

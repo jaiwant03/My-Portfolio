@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import CustomCursor from "../components/CustomCursor";
 import AuthBackground from "../components/AuthBackground";
+import API_BASE_URL from "../config/api";
 
 function Signup() {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ function Signup() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/signup",
+        `${API_BASE_URL}/api/signup`,
         form
       );
       alert(res.data.message || "Signup successful");
